@@ -1,4 +1,6 @@
 package TempPractice;
 
-public class Temp_4 {
+public abstract class Temp_4 implements Temp_3{
+    public abstract void getData();
+
 }
