@@ -7,10 +7,10 @@ import org.springframework.util.Assert;
 
 import java.time.Duration;
 
-public class Google_Automation {
+public class Test_Automation_Practice {
     public static void main(String[] args) throws InterruptedException {
 
-        System.setProperty("webdriver.chorme.driver", "\"C:\\Users\\prono\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\"");
+//        System.setProperty("webdriver.chorme.driver", "\"C:\\Users\\prono\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\"");
         ChromeDriver driver = new ChromeDriver();
         //Providing Implicit wait
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -77,6 +77,11 @@ public class Google_Automation {
         Thread.sleep(1000);
         signInButton.click();
 
-//        driver.close();
+        //Validation For Login Success
+        String getLoginSuccessText = driver.findElement(By.xpath("//div[contains(@class, \"login\")]//p[contains(text(), \"logged in.\")]")).getText();
+        Assert.isTrue(getLoginSuccessText.contains("successfully logged"), "Unable to Validate login Success");
+        System.out.println("Logged in Successfully. Received Message: " + getLoginSuccessText);
+
+        driver.close();
     }
 }
