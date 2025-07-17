@@ -1,4 +1,4 @@
-package CoreJavaBrushUp_1;
+package com.selenium.practice.CoreJava.CoreJavaBrushUp_1;
 
 public class MethodDemo2 {
     public void getUserData() {

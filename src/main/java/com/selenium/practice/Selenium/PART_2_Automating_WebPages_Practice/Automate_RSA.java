@@ -1,24 +1,40 @@
-package com.selenium.practice.PART_2_Automating_Google;
+package com.selenium.practice.Selenium.PART_2_Automating_WebPages_Practice;
 
+import Utility.BaseTest;
+import Utility.FrameworkConstants;
+import com.aventstack.extentreports.ExtentReports;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.util.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Test_Automation_Practice {
-    public static void main(String[] args) throws InterruptedException {
+/**
+ * In this file I am Automating the Login and Resetting of Account using
+ * Rahul Shetty Academy Practice portal for Selenium Locators
+ */
+
+public class Automate_RSA extends BaseTest {
+
+    @Test
+    public void RSA() throws InterruptedException {
+        SeleniumTest = extentReports.createTest("Practice Set 1- RSA Automation");
 
 //        System.setProperty("webdriver.chorme.driver", "\"C:\\Users\\prono\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\"");
+        SeleniumTest.info("Starting Chrome Driver");
         ChromeDriver driver = new ChromeDriver();
         //Providing Implicit wait
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
+
         //Go to URL
-        driver.get("http://www.rahulshettyacademy.com/locatorspractice/");
+        SeleniumTest.info("Navigating to Website: " + FrameworkConstants.rsaWebsite);
+        driver.get(FrameworkConstants.rsaWebsite);
 
         //WebElements for Future Use
+        SeleniumTest.info("Sending UserName and Password");
         WebElement inputUserName = driver.findElement(By.id("inputUsername"));
         WebElement inputPassword = driver.findElement(By.name("inputPassword"));
         WebElement signInButton = driver.findElement(By.className("signInBtn"));
@@ -34,8 +50,9 @@ public class Test_Automation_Practice {
         if (isErrorDisplayed) {
             String errorElementText = errorElement.getText();
             if (!errorElementText.contains("Incorrect username")) {
-                throw new AssertionError("Unable to get Incorrect Username... string. Got: " + errorElementText);
-            }
+                SeleniumTest.fail("Validation Failed");
+                throw new AssertionError("Unable To Validate Information... string. Got: " + errorElementText);
+            } else SeleniumTest.pass("Validation Success for Entering Wrong Username and Password");
         }
         driver.findElement(By.linkText("Forgot your password?")).click();
 //        String text = driver.findElement(By.cssSelector("a[href='#']")).getText();

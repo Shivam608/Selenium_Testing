@@ -1,8 +1,6 @@
-package com.selenium.practice;
+package com.selenium.practice.Selenium.PART_1_Introduction;
 
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class PART_1_Selenium_Introduction {
     public static void main(String[] args) {

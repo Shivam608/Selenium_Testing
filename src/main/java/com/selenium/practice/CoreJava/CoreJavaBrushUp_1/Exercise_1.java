@@ -1,4 +1,4 @@
-package CoreJavaBrushUp_1;
+package com.selenium.practice.CoreJava.CoreJavaBrushUp_1;
 public class Exercise_1 {
     public static void main (String[] args) {
         /**

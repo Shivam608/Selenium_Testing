@@ -1,4 +1,4 @@
-package TempPractice;
+package com.selenium.practice.TempPractice;
 
 public class Temp_2 implements Temp_3{
     public static void main(String args[]) throws Exception {

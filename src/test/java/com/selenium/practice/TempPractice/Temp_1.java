@@ -1,4 +1,4 @@
-package TempPractice;
+package com.selenium.practice.TempPractice;
 
 import java.util.Arrays;
 import java.util.Stack;
