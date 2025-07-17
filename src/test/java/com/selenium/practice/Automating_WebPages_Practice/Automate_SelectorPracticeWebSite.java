@@ -16,7 +16,7 @@ import java.time.Duration;
  * Rahul Shetty Academy Practice portal for Selenium Locators
  */
 
-public class Automate_RSA extends BaseTest {
+public class Automate_SelectorPracticeWebSite extends BaseTest {
 
     @Test
     public void RSA() throws InterruptedException {
