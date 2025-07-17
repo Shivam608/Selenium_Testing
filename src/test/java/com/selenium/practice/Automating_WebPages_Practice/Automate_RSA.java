@@ -1,12 +1,12 @@
-package com.selenium.practice.Selenium.PART_2_Automating_WebPages_Practice;
+package com.selenium.practice.Automating_WebPages_Practice;
 
 import Utility.BaseTest;
 import Utility.FrameworkConstants;
-import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.springframework.util.Assert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -39,29 +39,30 @@ public class Automate_RSA extends BaseTest {
         WebElement inputPassword = driver.findElement(By.name("inputPassword"));
         WebElement signInButton = driver.findElement(By.className("signInBtn"));
 
+        String userName = "Pranay Kr";
+        String password_Old = "123456790";
+        String password_New;
+
         //Perform Actions
-        inputUserName.sendKeys("Kumar");
-        inputPassword.sendKeys("123456");
+        inputUserName.sendKeys(userName);
+        inputPassword.sendKeys(password_Old);
         signInButton.click();
 
         //CSS Selector for Text -> * Incorrect username or password
         WebElement errorElement = driver.findElement(By.cssSelector("p.error"));
-        boolean isErrorDisplayed = errorElement.isDisplayed();
-        if (isErrorDisplayed) {
-            String errorElementText = errorElement.getText();
-            if (!errorElementText.contains("Incorrect username")) {
-                SeleniumTest.fail("Validation Failed");
-                throw new AssertionError("Unable To Validate Information... string. Got: " + errorElementText);
-            } else SeleniumTest.pass("Validation Success for Entering Wrong Username and Password");
-        }
+        Assert.assertTrue(errorElement.isDisplayed(), "Unable to Find Web Element after Sending \"Incorrect Credentials\" ");
+        String errorElementText = errorElement.getText();
+        Assert.assertTrue(errorElementText.contains("Incorrect username"), "Validation Failed as String: \"Incorrect Credentials\" not Found");
+        SeleniumTest.pass("Validation Success for Entering Wrong Username and Password");
+
         driver.findElement(By.linkText("Forgot your password?")).click();
 //        String text = driver.findElement(By.cssSelector("a[href='#']")).getText();
 //        System.out.println(text);
 //        document.querySelectorAll("a[href='#']")   --> use this in dev tools console to get the list of elements
 
         //Parent to Child Traversing
-        String forgotPasswordString = driver.findElement(By.xpath("//form/h2[contains(text(), 'Forgot')]")).getText();
-        System.out.println(forgotPasswordString);
+//        String forgotPasswordString = driver.findElement(By.xpath("//form/h2[contains(text(), 'Forgot')]")).getText();
+//        System.out.println(forgotPasswordString);
 
         //Sending new Name and Email and Phone Number
 //        driver.findElement(By.xpath("//input[@type='text' and @placeholder='Name']")).sendKeys("Shivam_Kr");
@@ -71,34 +72,43 @@ public class Automate_RSA extends BaseTest {
         // driver.findElement(By.cssSelector("input[type='text'][placeholder='Phone Number']")).sendKeys("Shivam.Pranay@goole.com");
 
         // Alternate way using Parent to Child Traversing and using Contains
-        driver.findElement(By.xpath("//form/input[@placeholder='Name']")).sendKeys("Text Name Field");
-        driver.findElement(By.xpath("//form/input[contains(@placeholder , 'Email')]")).sendKeys("Text Email Field");
-        driver.findElement(By.xpath("//form/input[3]")).sendKeys("Text PhoneNumber Field"); //Not recommended
+        SeleniumTest.log(Status.INFO, "Performing Reset To get new Password");
+        driver.findElement(By.xpath("//form/input[@placeholder='Name']")).sendKeys(userName);
+        driver.findElement(By.xpath("//form/input[contains(@placeholder , 'Email')]")).sendKeys("bose8092578175@orkut.com");
+        driver.findElement(By.xpath("//form/input[3]")).sendKeys(password_Old); //Not recommended to User Index [3] or [2]
 
         //Click on Reset login and Press Go to LogIn
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//div[contains(@class, 'pwd-btn-conainer')]/button[contains(@class, 'go-to-login')]")).click();
+        SeleniumTest.info("Click on Reset Password button");
         driver.findElement(By.xpath("//div/button[contains(@class, 'reset-pwd')]")).click();
 
         //Get the String for Password Reset Success
+        SeleniumTest.log(Status.INFO, "Fetching New Password From Success Message String");
         String resetPassword = driver.findElement(By.xpath("//p[@class=\"infoMsg\"]")).getText();
-        Assert.isTrue((resetPassword.contains("password") && resetPassword.contains("to Login.")), "Failed to Match Expected String");
+        Assert.assertTrue((resetPassword.contains("password") && resetPassword.contains("to Login.")), "Failed to Match Expected String");
+        SeleniumTest.log(Status.PASS, "Reset Password Success. Received Message: " + resetPassword);
+        driver.findElement(By.xpath("//div[contains(@class, 'pwd-btn-conainer')]/button[contains(@class, 'go-to-login')]")).click();
 
         //Extract Password from String
+        SeleniumTest.info("Extracting Password from String: " + resetPassword);
         String[] listOfString = resetPassword.split("'");
-        resetPassword = listOfString[1];
+        password_New = listOfString[1];
+        SeleniumTest.pass("Password Successfully Extracted: Password: " + password_New);
 
         //Enter Correct UserName and Password
-        inputUserName.sendKeys("PK");
-        inputPassword.sendKeys(resetPassword);
+        SeleniumTest.info("Sending Username: "+ userName +" & New Password: " + password_New);
+        inputUserName.sendKeys(userName);
+        inputPassword.sendKeys(password_New);
         Thread.sleep(1000);
+        SeleniumTest.log(Status.INFO, "Clicking on SignIn with New Password");
         signInButton.click();
 
         //Validation For Login Success
         String getLoginSuccessText = driver.findElement(By.xpath("//div[contains(@class, \"login\")]//p[contains(text(), \"logged in.\")]")).getText();
-        Assert.isTrue(getLoginSuccessText.contains("successfully logged"), "Unable to Validate login Success");
-        System.out.println("Logged in Successfully. Received Message: " + getLoginSuccessText);
+        Assert.assertTrue(getLoginSuccessText.contains("successfully logged"), "Unable to Validate login Success");
+        SeleniumTest.pass("Logged in Successfully. Received Message: " + getLoginSuccessText);
 
+        Thread.sleep(5000);
         driver.close();
     }
 }
