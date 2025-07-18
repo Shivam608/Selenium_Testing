@@ -23,7 +23,7 @@ public class Automate_SelectorPracticeWebSite extends BaseTest {
     public void automateSelectorPracticeWebSite() throws InterruptedException {
         SeleniumTest = extentReports.createTest("Practice Set 1- RSA Automation");
 
-//        System.setProperty("webdriver.chorme.driver", "\"C:\\Users\\prono\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\"");
+//        System.setProperty("webdriver.chrome.driver", "\"C:\\Users\\prono\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\"");
         SeleniumTest.info("Starting Chrome Driver");
         ChromeDriver driver = new ChromeDriver();
         //Providing Implicit wait
@@ -31,8 +31,8 @@ public class Automate_SelectorPracticeWebSite extends BaseTest {
 
 
         //Go to URL
-        SeleniumTest.info("Navigating to Website: " + FrameworkConstants.rsaWebsite);
-        driver.get(FrameworkConstants.rsaWebsite);
+        SeleniumTest.info("Navigating to Website: " + FrameworkConstants.rsaSelectorWebsite);
+        driver.get(FrameworkConstants.rsaSelectorWebsite);
 
         //WebElements for Future Use
         SeleniumTest.info("Sending UserName and Password");

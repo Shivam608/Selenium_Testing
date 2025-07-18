@@ -27,8 +27,8 @@ public abstract class BaseTest {
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("d MMM uuuu")).replace(" ", "_");
         String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH mm ss")).replace(" ", "_");
 
-        String ReportFile = System.getProperty("user.dir") + "/Reports/SeleniumReports_" + date + "_IST_" + time + ".html";
-        sparkReporter = new ExtentSparkReporter(ReportFile);
+        String ReportFileLocation = System.getProperty("user.dir") + "/Reports/SeleniumReports_" + date + "_IST_" + time + ".html";
+        sparkReporter = new ExtentSparkReporter(ReportFileLocation);
         sparkReporter.config().setTheme(Theme.STANDARD);
         sparkReporter.config().setDocumentTitle("Selenium/TestNG Automation");
         sparkReporter.config().setEncoding("utf-8");

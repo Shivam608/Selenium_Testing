@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Selenium Automation" >
+    <test name="Selenium Practice" >
+        <classes>
+            <class name="com.selenium.practice.Automating_WebPages_Practice.Automate_SelectorPracticeWebSite"></class>
+            <class name="com.selenium.practice.Automating_WebPages_Practice.Automate_AutomationPracticeWebSite"></class>
+        </classes>
+    </test>
+</suite>
