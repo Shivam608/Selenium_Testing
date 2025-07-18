@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.Objects;
 
 /**
  * In this file I am Automating the Login and Resetting of Account using
@@ -19,7 +20,7 @@ import java.time.Duration;
 public class Automate_SelectorPracticeWebSite extends BaseTest {
 
     @Test
-    public void RSA() throws InterruptedException {
+    public void automateSelectorPracticeWebSite() throws InterruptedException {
         SeleniumTest = extentReports.createTest("Practice Set 1- RSA Automation");
 
 //        System.setProperty("webdriver.chorme.driver", "\"C:\\Users\\prono\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\"");
@@ -105,6 +106,7 @@ public class Automate_SelectorPracticeWebSite extends BaseTest {
 
         //Validation For Login Success
         String getLoginSuccessText = driver.findElement(By.xpath("//div[contains(@class, \"login\")]//p[contains(text(), \"logged in.\")]")).getText();
+        Assert.assertTrue(Objects.requireNonNull(driver.getPageSource()).contains(userName));
         Assert.assertTrue(getLoginSuccessText.contains("successfully logged"), "Unable to Validate login Success");
         SeleniumTest.pass("Logged in Successfully. Received Message: " + getLoginSuccessText);
 
