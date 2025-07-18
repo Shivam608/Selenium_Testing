@@ -33,10 +33,16 @@ public class Automate_AutomationPracticeWebSite extends BaseTest {
         SeleniumTest.log(Status.PASS, "Navigation to Website Success: " + driver.getTitle());
 
         //Navigate to Log in Button and Click
-        WebElement loginElement = driver.findElement(By.xpath("//div/button[contains(text(), \"Practice\")]/following-sibling::button[text()=\"Login\"]"));
+        WebElement loginElement = driver.findElement(By.xpath("//div/button[contains(text(), 'Practice')]/following-sibling::button[text()='Login']"));
         String loginText = loginElement.getText();
         Assert.assertEquals(loginText, "Login", "Unable to Match. Received Text: " + loginText);
-        SeleniumTest.log(Status.PASS, "Login Text/Button Validated Successfully");
+        SeleniumTest.log(Status.PASS, "Login Text/Button Validated Successfully. Received Text: " + textColor("pappu", loginText));
+
+        SeleniumTest.log(Status.INFO, "Get Blinking Text from WebSite");
+        WebElement blinkingTextElement = driver.findElement(By.xpath("//button[contains(text(),'Practice')]//parent::div//parent::header/a[contains(@class,'blinking')]"));
+        String blikingText = blinkingTextElement.getText();
+        Assert.assertTrue(Objects.requireNonNull(blikingText).contains("Free Access to Interview"));
+        SeleniumTest.log(Status.PASS, "Blinking Text validated Successfully. Received Text: " + textColorGreen(blikingText));
 
         Thread.sleep(5000);
         driver.close();
