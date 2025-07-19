@@ -6,10 +6,9 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
+import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -47,6 +46,13 @@ public abstract class BaseTest extends FrameworkUtilities {
     public void tearDownExtentReport() {
         if (extentReports != null) {
             extentReports.flush();
+        }
+    }
+
+    public void initializeExtentTest() {
+        if (SeleniumTest == null) {
+            SeleniumTest = extentReports.createTest("Selenium/TestNG Automation Practice" + "(Auto Created...");
+            SeleniumTest.log(Status.WARNING, backgroundColorOrange("Extent test was Auto Created in the Report due to missing alignment with the Test."));
         }
     }
 

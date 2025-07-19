@@ -18,7 +18,7 @@ public class Automate_AutomationPracticeWebSite extends BaseTest {
     @Test(description = "", groups = "TestNG")
     public void automate_AutomationPracticeWebsite() throws InterruptedException {
 
-        SeleniumTest = extentReports.createTest("Automate RSA Automation Practice Website");
+        SeleniumTest = extentReports.createTest("Practice Set 2- Automate Website practice");
 
         //Setting up WebDriver
         WebDriver driver = new ChromeDriver();

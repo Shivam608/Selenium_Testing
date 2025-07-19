@@ -21,7 +21,7 @@ public class Automate_SelectorPracticeWebSite extends BaseTest {
 
     @Test
     public void automateSelectorPracticeWebSite() throws InterruptedException {
-        SeleniumTest = extentReports.createTest("Practice Set 1- RSA Automation");
+        SeleniumTest = extentReports.createTest("Practice Set 1- Locator practice");
 
 //        System.setProperty("webdriver.chrome.driver", "\"C:\\Users\\prono\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\"");
         SeleniumTest.info("Starting Chrome Driver");
