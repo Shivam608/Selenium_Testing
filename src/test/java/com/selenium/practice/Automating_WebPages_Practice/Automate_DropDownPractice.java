@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+import java.util.List;
 import java.util.Objects;
 
 public class Automate_DropDownPractice extends BaseTest {
@@ -22,6 +24,7 @@ public class Automate_DropDownPractice extends BaseTest {
         //Initializing Chrome Driver using webDriver Interface
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         //Navigating to the Selected Page
         SeleniumTest.log(Status.INFO, "Navigating to Website: " + FrameworkConstants.rsaDropDownPractice);
@@ -29,7 +32,9 @@ public class Automate_DropDownPractice extends BaseTest {
         Assert.assertTrue(Objects.requireNonNull(driver.getTitle()).contains("QAClickJet"));
         SeleniumTest.log(Status.PASS, textColorGreen("Navigated to WebSite: " + driver.getTitle() + " Successfully"));
 
-        //Practice DropDown List and their Elements
+        /**
+         * Practice Static DropDown List and their Elements
+         */
         //Static Drop Down Elements
         SeleniumTest.log(Status.INFO, "Setting Currency to AED");
         WebElement currencyList = driver.findElement(By.xpath("//div[@class = 'currency-dropdown']/select[contains(@name, 'DropDownListCurrency')]"));
@@ -55,6 +60,54 @@ public class Automate_DropDownPractice extends BaseTest {
         driver.findElement(By.xpath("//input[@class = 'buttonN' and @value='Done']")).click();
         SeleniumTest.log(Status.PASS, textColorGreen("Total Number of Adults added: " + addAdults));
 
+        /**
+         * Practice Dynamic DropDown List and their Elements
+         */
+        //Click On Departure Option to generate the drop Down List
+        driver.findElement(By.xpath("//div[@id='marketCityPair_1']//input[contains(@value, 'Departure City')]")).click();
+        SeleniumTest.log(Status.INFO, "Selecting Departure City from Drop Down List");
+        driver.findElement(By.xpath("//div[@id='marketCityPair_1']//a[text()=' Hyderabad (HYD)']")).click();
+//        WebElement setFromCityNameElement = driver.findElement(By.xpath("(//*[@id='ctl00_mainContent_ddl_originStation1_CTXT'])[1]"));
+//        Thread.sleep(1000);
+//        Assert.assertTrue(setFromCityNameElement.getText().contains("HYD"), "Failed to Set Departure City. Expected: Hyderabad (HYD), Actual: " + setFromCityNameElement.getText());
+//        SeleniumTest.pass(textColorGreen("Departure City Set Successfully to :" + setFromCityNameElement.getText()));
+
+        SeleniumTest.log(Status.INFO, "Selecting Arrival City from Drop Down list");
+        driver.findElement(By.xpath("//div[@id='marketCityPair_1']//div[@class='right1']//a[contains(text(), ' Mumbai (BOM)')]")).click();
+//        WebElement setToCityNameElement = driver.findElement(By.id("ctl00_mainContent_ddl_destinationStation1_CTXT"));
+//        Thread.sleep(1000);
+//        Assert.assertTrue(setToCityNameElement.getText().contains("BOM"), "Failed to Set Arrival City. Expected: Mumbai (BOM), Actual: " + setToCityNameElement.getText());
+//        SeleniumTest.pass(textColorGreen("Actual City Set Successfully to :" + setToCityNameElement.getText()));
+
+        SeleniumTest.log(Status.INFO, "Selected Date of travel From Calendar");
+        driver.findElement(By.cssSelector("td[class=' ui-datepicker-week-end  ui-datepicker-current-day'] a")).click();
+
+        /**
+         * Practice Auto Suggestive  DropDown List and their Elements
+         */
+        SeleniumTest.log(Status.INFO, "Selecting Country India from Auto Suggestive Drop-Down List");
+        WebElement autoSuggestTextBoxElement = driver.findElement(By.xpath("//legend/following-sibling::input[@id='autosuggest']"));
+        autoSuggestTextBoxElement.sendKeys("Ind");
+        List<WebElement> autoSuggestElements = driver.findElements(By.xpath("//ul[contains(@id,'ui-id-1')]/li"));
+        for (WebElement e : autoSuggestElements) {
+            if (e.getText().equalsIgnoreCase("india")) {
+                e.click();
+                break;
+            }
+        }
+
+        /**
+         * Practice Working with checkboxes
+         */
+        SeleniumTest.log(Status.INFO, "Validate Check Boxes");
+        WebElement studentCheckBoxElement = driver.findElement(By.cssSelector("input[id*='chk_StudentDiscount']"));
+        studentCheckBoxElement.click();
+        Assert.assertTrue(studentCheckBoxElement.isSelected(), "Student CheckBox Element is not Selected");
+        SeleniumTest.pass(textColorGreen("Check Box is Selected for Student Category"));
+
+        List<WebElement> checkboxElements = driver.findElements(By.xpath("//*[@type='checkbox']"));
+        System.out.println("Number of Checkboxes: "+ checkboxElements.size());
+        SeleniumTest.log(Status.INFO, textColorGreen("Number of Checkboxes: "+ checkboxElements.size()));
 
         SeleniumTest.log(Status.INFO, "Closing Browser");
         driver.close();
