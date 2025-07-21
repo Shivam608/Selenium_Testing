@@ -40,7 +40,7 @@ public class Automate_DropDownPractice extends BaseTest {
         Assert.assertEquals(dropdown.getFirstSelectedOption().getText(), "AED", "Text From Currency Tab Nt Matched");
         SeleniumTest.log(Status.PASS, textColorGreen("Currency Set to " + dropdown.getFirstSelectedOption().getText() + " Successfully"));
 
-        //Selecting Number of Adults from drop down list as 5 and validating same
+        //Selecting the Number of Adults from a drop-down list as 5 and validating same
         SeleniumTest.log(Status.INFO, "Adding Total Number of Adults as 5");
         driver.findElement(By.xpath("//*[@id= 'divpaxinfo']")).click();
         Thread.sleep(5000);

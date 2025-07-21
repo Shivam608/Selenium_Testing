@@ -1,4 +1,4 @@
-package com.selenium.practice.CoreJava.CoreJavaBrushUp_1;
+package CoreJavaBrushUp_1;
 
 import java.util.Stack;
 
