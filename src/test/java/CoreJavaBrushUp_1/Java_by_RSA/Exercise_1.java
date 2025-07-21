@@ -1,4 +1,4 @@
-package CoreJavaBrushUp_1;
+package CoreJavaBrushUp_1.Java_by_RSA;
 public class Exercise_1 {
     public static void main (String[] args) {
         /**

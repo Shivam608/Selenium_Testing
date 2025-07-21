@@ -1,11 +1,11 @@
-package CoreJavaBrushUp_1;
+package CoreJavaBrushUp_1.InterviewQuestions;
 
 import java.util.Stack;
 
 public class ReversingAString {
     public static void main(String[] args) {
         String s = "Hello World";
-//        ReversingAString.usingDSA(s);
+//        ReversingAString.usingStack(s);
         ReversingAString.usingForLoop(s);
     }
 
@@ -16,7 +16,7 @@ public class ReversingAString {
         }
     }
 
-    private static void usingDSA(String s) {
+    private static void usingStack(String s) {
         Stack<Character> stack = new Stack<>();
 
         for (char c : s.toCharArray()) {

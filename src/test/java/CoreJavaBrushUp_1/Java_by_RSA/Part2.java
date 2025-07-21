@@ -1,4 +1,4 @@
-package CoreJavaBrushUp_1;
+package CoreJavaBrushUp_1.Java_by_RSA;
 
 public class Part2 {
     public static void main(String[] args) {
