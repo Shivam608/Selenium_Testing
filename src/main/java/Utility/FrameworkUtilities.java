@@ -1,5 +1,14 @@
 package Utility;
 
+import org.testng.Assert;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
+import static Utility.BaseTest.baseUri;
+
 public class FrameworkUtilities {
 
     //Text Color::Green
@@ -19,9 +28,9 @@ public class FrameworkUtilities {
 
     //Text Color::Any
     public static String textColor(String color, String text) {
-        if(color != null && color.length()>=3) {
+        if (color != null && color.length() >= 3) {
             color = color.toLowerCase();
-            return "<span style = 'color:" +color+ "'>" + text + "</span>";
+            return "<span style = 'color:" + color + "'>" + text + "</span>";
         } else {
             System.out.println("Specified Color not available in Color Library. Going with Default Color");
             return null;
@@ -50,12 +59,39 @@ public class FrameworkUtilities {
 
     //Background Color::Any
     public static String backgroundColor(String color, String text) {
-        if(color != null && color.length()>=3) {
+        if (color != null && color.length() >= 3) {
             color = color.toLowerCase();
             return "<span style='color:white; background-color:" + color + "; padding:5px;'>" + text + "</span>";
         } else {
             System.out.println("Specified Color not available in Color Library. Going with Default Color");
             return null;
         }
+    }
+
+    //get Base URI from Config.properties
+    public static String getBaseUri() {
+        if (baseUri.isEmpty()) {
+            try {
+                FileReader reader = new FileReader(System.getProperty("user.dir") + "\\src\\main\\resources\\application.properties");
+                Properties prop = new Properties();
+                prop.load(reader);
+                baseUri = prop.getProperty("RestAssured_BaseURI").replace("\"", "");
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            return baseUri;
+        }
+        return baseUri;
+    }
+
+    //get Any Value from Application.properties
+    public static String getValueFromProperties(String key) throws IOException {
+        FileReader reader = new FileReader(System.getProperty("user.dir") + "\\src\\main\\resources\\application.properties");
+        Properties prop = new Properties();
+        prop.load(reader);
+        String value = prop.getProperty(key);
+        Assert.assertNotNull(value, "No Such Key: " + key);
+        System.out.println("Key: " + key + ", Value: " + value);
+        return (String) value;
     }
 }

@@ -5,10 +5,10 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import io.restassured.response.Response;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
-import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +17,8 @@ public abstract class BaseTest extends FrameworkUtilities {
     public static ExtentSparkReporter sparkReporter;
     public static ExtentReports extentReports;
     public static ExtentTest SeleniumTest;
+    public static Response response;
+    public static String baseUri = "";
 
     @BeforeSuite(alwaysRun = true)
     public void extentReport() {
