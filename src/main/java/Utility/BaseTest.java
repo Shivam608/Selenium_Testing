@@ -27,7 +27,7 @@ public abstract class BaseTest extends FrameworkUtilities {
         }
     }
 
-    public ExtentReports createInstance() {
+    private ExtentReports createInstance() {
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("d MMM uuuu")).replace(" ", "_");
         String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH mm ss")).replace(" ", "_");
 
@@ -52,6 +52,7 @@ public abstract class BaseTest extends FrameworkUtilities {
     }
 
     public void initializeExtentTest() {
+//        extentReport();
         if (SeleniumTest == null) {
             SeleniumTest = extentReports.createTest("Selenium/TestNG Automation Practice" + "(Auto Created...");
             SeleniumTest.log(Status.WARNING, backgroundColorOrange("Extent test was Auto Created in the Report due to missing alignment with the Test."));
