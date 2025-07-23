@@ -13,24 +13,24 @@ public class FrameworkUtilities {
 
     //Text Color::Green
     public static String textColorGreen(String text) {
-        return "<span style = 'color:green'>" + text + "</span>";
+        return "<span style = 'color:green'>" + " " + text + " " + "</span>";
     }
 
     //Text Color::Red
     public static String textColorRed(String text) {
-        return "<span style = 'color:red'>" + text + "</span>";
+        return "<span style = 'color:red'>" + " " + text + " " + "</span>";
     }
 
     //Text Color::Orange
     public static String textColorOrange(String text) {
-        return "<span style = 'color:orange'>" + text + "</span>";
+        return "<span style = 'color:orange'>" + " " + text + " " + "</span>";
     }
 
     //Text Color::Any
     public static String textColor(String color, String text) {
         if (color != null && color.length() >= 3) {
             color = color.toLowerCase();
-            return "<span style = 'color:" + color + "'>" + text + "</span>";
+            return "<span style = 'color:" + color + "'>"+ " " + text + " " +"</span>";
         } else {
             System.out.println("Specified Color not available in Color Library. Going with Default Color");
             return null;
