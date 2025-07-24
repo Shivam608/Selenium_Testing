@@ -21,10 +21,18 @@ public class Automate_Alerts extends BaseTest {
         driver.findElement(By.id("name")).sendKeys("PranayKr");
         driver.findElement(By.id("alertbtn")).click();
 
-        //Switch to Alert
+        //Switch to Alert popUp Box
         //Alerts are not html elements and selenium can't handel other than html, Alerts are JavaScript alerts
         //Thus, Selenium provided a Class with specific Methods to Handel alerts
+        System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();
+
+        driver.findElement(By.id("name")).sendKeys("PranayKr");
+        driver.findElement(By.id("confirmbtn")).click();
+
+        //Switch to Confirm PopUp
+        System.out.println(driver.switchTo().alert().getText());
+        driver.switchTo().alert().dismiss();
 
     }
 
