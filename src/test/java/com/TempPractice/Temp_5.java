@@ -1,4 +1,4 @@
-package com.selenium.practice.TempPractice;
+package com.TempPractice;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

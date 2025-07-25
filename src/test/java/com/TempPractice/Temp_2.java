@@ -1,11 +1,11 @@
-package com.selenium.practice.TempPractice;
+package com.TempPractice;
 
 public class Temp_2 implements Temp_3{
     public static void main(String args[]) throws Exception {
         int num = 10;
         printString(num);
 
-        Temp_3.sound();
+        sound();
     }
 
     static void printString(int num) {
