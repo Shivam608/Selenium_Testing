@@ -12,7 +12,6 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class LoginPagePractice_Configurations extends BaseTest {
 

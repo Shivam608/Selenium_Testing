@@ -1,7 +1,6 @@
 package com.selenium.practice.Assignments;
 
 import Components.LoginPagePractice_Configurations;
-import Utility.BaseTest;
 import Utility.FrameworkConstants;
 import Utility.XpathStore;
 import com.aventstack.extentreports.Status;
@@ -16,9 +15,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 public class Assignment_2 extends LoginPagePractice_Configurations {
