@@ -6,6 +6,7 @@ public interface FrameworkConstants {
     String rsaAutomationWebsite = "http://www.rahulshettyacademy.com/AutomationPractice/";
     String rsaDropDownPractice = "https://rahulshettyacademy.com/dropdownsPractise/";
     String rsaGreenKart= "https://rahulshettyacademy.com/seleniumPractise/#/";
+    String rsaAssignment2_LoginPagePractice = "https://rahulshettyacademy.com/loginpagePractise/";
 
     /**Hex code for Dark Colors*/
     String hexCodeDarkRed = "#8B0000";

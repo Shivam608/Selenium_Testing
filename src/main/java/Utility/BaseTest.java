@@ -6,6 +6,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import io.restassured.response.Response;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -69,6 +70,23 @@ public abstract class BaseTest extends FrameworkUtilities {
             SeleniumTest.log(Status.PASS, backgroundColorGreen("Selenium Test SUCCESS"));
         } else {
             SeleniumTest.log(Status.FAIL, backgroundColorPurple("TEST NOT FOUND"));
+        }
+    }
+
+    public static void closeBrowser(WebDriver driver) {
+        SeleniumTest.log(Status.INFO, "Closing/Quiting Browser");
+        if (driver != null) {
+            try {
+                driver.close();
+            } catch (Exception e) {
+                System.err.println("Error on close(): " + e.getMessage());
+            } finally {
+                try {
+                    driver.quit();
+                } catch (Exception ex) {
+                    System.err.println("Error on quit(): " + ex.getMessage());
+                }
+            }
         }
     }
 
