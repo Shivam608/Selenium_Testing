@@ -5,7 +5,7 @@ public class Temp_2 implements Temp_3{
         int num = 10;
         printString(num);
 
-        sound();
+        Temp_3.sound();
     }
 
     static void printString(int num) {
