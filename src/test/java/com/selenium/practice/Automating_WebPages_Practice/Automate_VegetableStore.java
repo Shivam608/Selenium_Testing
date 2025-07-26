@@ -53,8 +53,9 @@ public class Automate_VegetableStore extends GreenKartConfigurations {
         SeleniumTest.info("Navigating to Checkout");
         driver.findElement(XpathStore.cartElementVegetableSore).click();
         driver.findElement(XpathStore.proceedToCheckOutElement).click();
+        executor.executeScript("document.body.style.zoom = '1'");
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(XpathStore.discountedAmountLocator));
-        int amtBeforeDiscount = Integer.parseInt(driver.findElement(XpathStore.discountedAmountLocator).getText());
+        float amtBeforeDiscount = Float.parseFloat(driver.findElement(XpathStore.discountedAmountLocator).getText());
 
         //Adding Explicit Waits
         SeleniumTest.log(Status.INFO, "Applying Promo Code: " + promoCode);
@@ -65,14 +66,13 @@ public class Automate_VegetableStore extends GreenKartConfigurations {
         //Wait until Promo Code is Applied Successfully and Discount is Calculated
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(XpathStore.promoInfoElementLocator));
         Assert.assertTrue(driver.findElement(XpathStore.promoInfoElementLocator).getText().contains("Code applied"), "Failed to Apply Promo Code: " + promoCode);
-        int amtAfterDiscount = Integer.parseInt(driver.findElement(XpathStore.discountedAmountLocator).getText());
+        float amtAfterDiscount = Float.parseFloat(driver.findElement(XpathStore.discountedAmountLocator).getText());
         Assert.assertNotEquals(amtAfterDiscount, amtBeforeDiscount, "Amount Remains Same after Applying promoCode");
         SeleniumTest.log(Status.INFO, "Amount Before Discount: " + amtBeforeDiscount + "<br>Amount After Discount: " + amtAfterDiscount);
         SeleniumTest.pass(textColorGreen("Promo Code Applied Successfully. Discounted Amount: " + (amtBeforeDiscount - amtAfterDiscount)));
 
-
-
-
+        //Closing Browser
+        SeleniumTest.log(Status.INFO, "Closing Browser");
         driver.quit();
     }
 
