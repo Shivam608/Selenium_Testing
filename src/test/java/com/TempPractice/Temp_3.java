@@ -1,4 +1,4 @@
-package com.selenium.practice.TempPractice;
+package com.TempPractice;
 
 public interface Temp_3 {
     public void getData();

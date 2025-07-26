@@ -1,4 +1,4 @@
-package com.selenium.practice.TempPractice;
+package com.TempPractice;
 
 public abstract class Temp_4 implements Temp_3{
     public abstract void getData();

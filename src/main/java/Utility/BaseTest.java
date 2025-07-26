@@ -2,19 +2,23 @@ package Utility;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import io.restassured.response.Response;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public abstract class BaseTest {
+public abstract class BaseTest extends FrameworkUtilities {
     public static ExtentSparkReporter sparkReporter;
     public static ExtentReports extentReports;
     public static ExtentTest SeleniumTest;
+    public static Response response;
+    public static String baseUri = "";
 
     @BeforeSuite(alwaysRun = true)
     public void extentReport() {
@@ -23,12 +27,12 @@ public abstract class BaseTest {
         }
     }
 
-    public ExtentReports createInstance() {
+    private ExtentReports createInstance() {
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("d MMM uuuu")).replace(" ", "_");
         String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH mm ss")).replace(" ", "_");
 
-        String ReportFile = System.getProperty("user.dir") + "/Reports/SeleniumReports_" + date + "_IST_" + time + ".html";
-        sparkReporter = new ExtentSparkReporter(ReportFile);
+        String ReportFileLocation = System.getProperty("user.dir") + "/Reports/SeleniumReports_" + date + "_IST_" + time + ".html";
+        sparkReporter = new ExtentSparkReporter(ReportFileLocation);
         sparkReporter.config().setTheme(Theme.STANDARD);
         sparkReporter.config().setDocumentTitle("Selenium/TestNG Automation");
         sparkReporter.config().setEncoding("utf-8");
@@ -44,6 +48,27 @@ public abstract class BaseTest {
     public void tearDownExtentReport() {
         if (extentReports != null) {
             extentReports.flush();
+        }
+    }
+
+    public void initializeExtentTest() {
+//        extentReport();
+        if (SeleniumTest == null) {
+            SeleniumTest = extentReports.createTest("Selenium/TestNG Automation Practice" + "(Auto Created...");
+            SeleniumTest.log(Status.WARNING, backgroundColorOrange("Extent test was Auto Created in the Report due to missing alignment with the Test."));
+        }
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void logTestResult(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            SeleniumTest.log(Status.FAIL, backgroundColorRed("Selenium Test FAILED"));
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            SeleniumTest.log(Status.SKIP, backgroundColorOrange("Selenium Test SKIPPED"));
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            SeleniumTest.log(Status.PASS, backgroundColorGreen("Selenium Test SUCCESS"));
+        } else {
+            SeleniumTest.log(Status.FAIL, backgroundColorPurple("TEST NOT FOUND"));
         }
     }
 

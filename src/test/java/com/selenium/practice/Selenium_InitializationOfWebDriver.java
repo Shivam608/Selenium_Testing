@@ -1,8 +1,8 @@
-package com.selenium.practice.Selenium.PART_1_Introduction;
+package com.selenium.practice;
 
 import org.openqa.selenium.edge.EdgeDriver;
 
-public class PART_1_Selenium_Introduction {
+public class Selenium_InitializationOfWebDriver {
     public static void main(String[] args) {
 
         //Invoking Browser
