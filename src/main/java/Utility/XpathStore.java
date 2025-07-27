@@ -29,4 +29,10 @@ public interface XpathStore {
     By popupOk_loginPage = By.id("okayBtn");
     By listOfProducts_loginPage = By.xpath("//app-card-list[@class='row']//h4[@class='card-title']");
     By intCartItems_loginPage = By.xpath("//*[@id='navbarResponsive']//li[@class='nav-item active']//a");
+
+    //Xpath/css locators from HerokuApp
+    By herokuAppClickElement = By.cssSelector("div[id='start'] button");
+    String loadingTextXpath = "//div[@id='loading']/text()";
+    By loadingImgCssElement = By.cssSelector("div[id='loading'] img");
+    By helloWorldTextElement = By.cssSelector("div[Id='finish'] h4");
 }
