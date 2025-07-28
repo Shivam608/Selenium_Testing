@@ -1,10 +1,15 @@
 package Utility;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import static Utility.BaseTest.baseUri;
@@ -93,5 +98,22 @@ public class FrameworkUtilities {
         Assert.assertNotNull(value, "No Such Key: " + key);
         System.out.println("Key: " + key + ", Value: " + value);
         return (String) value;
+    }
+
+    public static boolean isVisible(WebDriver driver, By xpath) {
+        List<WebElement> elements = driver.findElements(xpath);
+        for (WebElement e : elements) {
+            if (e.isDisplayed()) {
+                System.out.println("Element Found");
+                return true;
+            } else System.out.println("Element not found");
+        } return false;
+    }
+
+    public static WebDriver initializeChromeDriverAndNavigateToUrl(String... url) {
+        String baseUri = url.length != 0 ? url[0] : "https://www.google.com/";
+        WebDriver driver = new ChromeDriver();
+        driver.get(baseUri);
+        return driver;
     }
 }

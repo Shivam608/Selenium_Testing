@@ -1,4 +1,4 @@
-package com.selenium.practice.Automating_WebPages_Practice;
+package com.selenium.practice.MethodsAndReusables;
 
 import Utility.FrameworkConstants;
 import Utility.XpathStore;
@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.function.Function;
 
 //this example of fluent wait uses only CSS and No Xpath's for Practice purpose
 public class FluentWaits {
