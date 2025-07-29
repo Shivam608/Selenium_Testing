@@ -36,4 +36,5 @@ public interface XpathStore {
     String loadingTextXpath = "//div[@id='loading']/text()";
     By loadingImgCssElement = By.cssSelector("div[id='loading'] img");
     By helloWorldTextElement = By.cssSelector("div[Id='finish'] h4");
+    By allLinksElementList_locator = By.xpath("//h2[text()='Available Examples']/following-sibling::ul/li/a[@href]");
 }

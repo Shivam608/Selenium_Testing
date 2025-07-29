@@ -18,7 +18,7 @@ public class FluentWaits {
     @Test
     public void fluentWaitExample() {
         WebDriver driver = new ChromeDriver();
-        driver.get(FrameworkConstants.herokuapp);
+        driver.get(FrameworkConstants.herokuAppDynamicLoading);
         driver.findElement(XpathStore.herokuAppClickElement).click();
         System.out.println("Element 'Loading' Image. Before..." + driver.findElement(XpathStore.loadingImgCssElement).isDisplayed());
 

@@ -74,7 +74,9 @@ public abstract class BaseTest extends FrameworkUtilities {
     }
 
     public static void closeBrowser(WebDriver driver) {
-        SeleniumTest.log(Status.INFO, "Closing/Quiting Browser");
+        if (extentReports != null || SeleniumTest != null) {
+            SeleniumTest.log(Status.INFO, "Closing/Quiting Browser");
+        }
         if (driver != null) {
             try {
                 driver.close();
