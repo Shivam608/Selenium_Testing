@@ -19,20 +19,25 @@ public class Assignment_3 extends HerokuAppLinks {
     public void assignment_3_MultipleWindows() {
 
 
+        //Create Test Instance and Navigate To URL using Chrome
         SeleniumTest = extentReports.createTest("Assignment 3 -> Practice Multiple Windows");
         SeleniumTest.info("Initializing Chrome and Navigating to URL: " + url);
         WebDriver driver = initializeChromeDriverAndNavigateToUrl(url);
 
+        //Navigate to Multiple Windows Practice Link
         SeleniumTest.info("Select Option: " + Multiple_Windows);
         clickOnElementFromList(driver, XpathStore.allLinksElementList_locator, Multiple_Windows);
 
+        //Validate WebElement for confirmation
         WebElement multipleWindowsTitle = driver.findElement(By.cssSelector("[class='example'] h3"));
         Assert.assertEquals(multipleWindowsTitle.getText(), "Opening a new window", textColorRed("Failed to Locate Text: 'Opening a new window'"));
         SeleniumTest.pass(textColorGreen("Clicked on Option: " + Multiple_Windows));
 
+        //Click on web element to open New Window
         SeleniumTest.info("Opening New Window");
         driver.findElement(By.cssSelector("div[class='example'] a[target='_blank']")).click();
 
+        //Fetching the number of Tabs Open
         SeleniumTest.info("Fetching Window Handles");
         Set<String> windows = driver.getWindowHandles();
         Iterator<String> iterator = windows.iterator();
