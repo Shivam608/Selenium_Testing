@@ -31,10 +31,13 @@ public interface XpathStore {
     By intCartItems_loginPage = By.xpath("//*[@id='navbarResponsive']//li[@class='nav-item active']//a");
     By blinkingText_loginPage = By.cssSelector("a[class='blinkingText']");
 
-    //Xpath/css locators from HerokuApp
+    //Xpath's/css locators from HerokuApp
     By herokuAppClickElement = By.cssSelector("div[id='start'] button");
     String loadingTextXpath = "//div[@id='loading']/text()";
     By loadingImgCssElement = By.cssSelector("div[id='loading'] img");
     By helloWorldTextElement = By.cssSelector("div[Id='finish'] h4");
     By allLinksElementList_locator = By.xpath("//h2[text()='Available Examples']/following-sibling::ul/li/a[@href]");
+
+    //Xpath's/css locators from Jquery Practice website
+    By jqueryInteractionsList = By.xpath("//*[text()='Interactions']/following-sibling::*//a");
 }

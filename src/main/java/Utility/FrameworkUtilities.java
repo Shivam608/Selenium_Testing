@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import static Utility.BaseTest.baseUri;
 
-public class FrameworkUtilities implements CustomizedReportStatements{
+public class FrameworkUtilities {
 
     WebDriver driver;
 

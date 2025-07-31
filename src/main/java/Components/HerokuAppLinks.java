@@ -1,6 +1,8 @@
 package Components;
 
 import Utility.BaseTest;
+import Utility.XpathStore;
+import org.openqa.selenium.WebDriver;
 
 public class HerokuAppLinks extends BaseTest {
 
@@ -48,4 +50,8 @@ public class HerokuAppLinks extends BaseTest {
     public static final String Status_Codes = "Status Codes";
     public static final String Typos = "Typos";
     public static final String WYSIWYG_Editor = "WYSIWYG Editor";
+
+    public void clickOnElementFromList(WebDriver driver, String searchText) {
+        this.clickOnElementFromList(driver, XpathStore.allLinksElementList_locator, searchText);
+    }
 }

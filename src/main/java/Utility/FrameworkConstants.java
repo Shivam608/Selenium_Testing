@@ -9,6 +9,7 @@ public interface FrameworkConstants {
     String rsaAssignment2_LoginPagePractice = "https://rahulshettyacademy.com/loginpagePractise/";
     String herokuAppDynamicLoading = "https://the-internet.herokuapp.com/dynamic_loading/1";
     String herokuApp = "https://the-internet.herokuapp.com/";
+    String jQueryPracticeSite = "https://jqueryui.com/";
 
     /**Hex code for Dark Colors*/
     String hexCodeDarkRed = "#8B0000";

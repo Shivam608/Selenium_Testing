@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public abstract class BaseTest extends FrameworkUtilities {
+public abstract class BaseTest extends FrameworkUtilities implements CustomizedReportStatements{
     public static ExtentSparkReporter sparkReporter;
     public static ExtentReports extentReports;
     public static ExtentTest SeleniumTest;

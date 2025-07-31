@@ -54,7 +54,8 @@ public class ActionsClass {
         }
 
 
-
+        //Right Click
+        cursor.moveToElement(driver.findElement(xpathStore("searchBox"))).contextClick().build().perform();
 
 //        closeBrowser();
     }
