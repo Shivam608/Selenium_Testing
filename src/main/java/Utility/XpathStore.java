@@ -40,4 +40,8 @@ public interface XpathStore {
 
     //Xpath's/css locators from Jquery Practice website
     By jqueryInteractionsList = By.xpath("//*[text()='Interactions']/following-sibling::*//a");
+
+    //Xpath/Css Locators from Assignment 2 -> RSA Automation Page Practice
+    By checkBoxList_AutomationPractice = By.xpath("//input[contains(@id,'checkBoxOption') and @type='checkbox']");
+    By selectOptions_AutomationPractice = By.xpath("//select[@id='dropdown-class-example']");
 }

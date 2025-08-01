@@ -22,7 +22,7 @@ public class FluentWaits {
         driver.findElement(XpathStore.herokuAppClickElement).click();
         System.out.println("Element 'Loading' Image. Before..." + driver.findElement(XpathStore.loadingImgCssElement).isDisplayed());
 
-        Wait<WebDriver> fluentWait_LoadingElement = new FluentWait<WebDriver>(driver)
+        Wait<WebDriver> fluentWait_LoadingElement = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(4))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class);

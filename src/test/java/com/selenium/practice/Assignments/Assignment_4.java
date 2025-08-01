@@ -2,15 +2,13 @@ package com.selenium.practice.Assignments;
 
 import Components.HerokuAppLinks;
 import Utility.FrameworkConstants;
-import Utility.XpathStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Assigment_4 extends HerokuAppLinks {
+public class Assignment_4 extends HerokuAppLinks {
 
     static String text = "";
     @Test
