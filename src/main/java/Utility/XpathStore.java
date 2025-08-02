@@ -44,4 +44,11 @@ public interface XpathStore {
     //Xpath/Css Locators from Assignment 2 -> RSA Automation Page Practice
     By checkBoxList_AutomationPractice = By.xpath("//input[contains(@id,'checkBoxOption') and @type='checkbox']");
     By selectOptions_AutomationPractice = By.xpath("//select[@id='dropdown-class-example']");
+
+    //Xpath/Css Locators from Assignment 2 -> RSA Calendar UI Automation
+    By calendarUiOpenCalendarElement = By.cssSelector("[class*='calendar-button__icon']");
+    By calendarUiHeaderElement = By.xpath("//span[contains(@class,'react-calendar__navigation__label__labelText--from')]");
+    By calendarUiGetListOfYearElements = By.xpath("//button[contains(@class,'react-calendar__decade-view__years__year')]");
+    By calendarUiGetListOfMonthElements = By.xpath("//button[contains(@class,'react-calendar__year-view__months__month')]");
+    By calendarUiGetListOfDateElements = By.xpath("//button[(contains(@class,'react-calendar__month-view__days__day')) and not(contains(@class,'--neighboringMonth'))]");
 }
