@@ -3,13 +3,11 @@ package Components;
 import Utility.BaseTest;
 import Utility.XpathStore;
 import com.aventstack.extentreports.Status;
-import groovyjarjarantlr4.runtime.tree.Tree;
 import lombok.NonNull;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.TreeMap;
@@ -27,7 +25,7 @@ public class GreenKartConfigurations extends BaseTest {
      * @param driver
      * @param listOfVegetables
      */
-    public static TreeMap<String, Integer> addProductsToCart(WebDriver driver, List<String> listOfVegetables) {
+    public TreeMap<String, Integer> addProductsToCart(WebDriver driver, List<String> listOfVegetables) {
         @NonNull
         String productNameFromDom = "";
         List<WebElement> productNameElement = driver.findElements(XpathStore.getProductNamesByXpath);

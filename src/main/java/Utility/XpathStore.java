@@ -15,5 +15,40 @@ public interface XpathStore {
     By discountedAmountLocator = By.xpath("//*[contains(text(), 'Total After Discount')]/following-sibling::span[@class='discountAmt']");
     By promoInfoElementLocator = By.xpath("//button[@class='promoBtn' and text()='Apply']/following-sibling::span[@class='promoInfo']");
 
+    //Xpath/Css Locators from Assignment 2 -> RSA Login Page Practice
+    By getUserNamePasswordString = By.xpath("//*[@class='text-center text-white']");
+    By userNamePasswordLocator_loginPage = By.xpath("//p[@class='text-center text-white']/b");
+    By username_loginPage = By.id("username");
+    By password_loginPage = By.id("password");
+    By radioButtonClass_loginPage = By.className("radiotextsty");
+    By radioButtons_loginPage = By.xpath("//input[@type='radio']/following-sibling::span");
+    By selectUserType_loginPage = By.xpath("//select[@class='form-control']");
+    By checkboxTOS_loginPage = By.cssSelector("[id='terms']");
+    By signInButton_loginPage = By.id("signInBtn");
+    By popupUserType_loginPage = By.xpath("//div[@id='myModal' and @class='modal fade show']");
+    By popupOk_loginPage = By.id("okayBtn");
+    By listOfProducts_loginPage = By.xpath("//app-card-list[@class='row']//h4[@class='card-title']");
+    By intCartItems_loginPage = By.xpath("//*[@id='navbarResponsive']//li[@class='nav-item active']//a");
+    By blinkingText_loginPage = By.cssSelector("a[class='blinkingText']");
 
+    //Xpath's/css locators from HerokuApp
+    By herokuAppClickElement = By.cssSelector("div[id='start'] button");
+    String loadingTextXpath = "//div[@id='loading']/text()";
+    By loadingImgCssElement = By.cssSelector("div[id='loading'] img");
+    By helloWorldTextElement = By.cssSelector("div[Id='finish'] h4");
+    By allLinksElementList_locator = By.xpath("//h2[text()='Available Examples']/following-sibling::ul/li/a[@href]");
+
+    //Xpath's/css locators from Jquery Practice website
+    By jqueryInteractionsList = By.xpath("//*[text()='Interactions']/following-sibling::*//a");
+
+    //Xpath/Css Locators from Assignment 2 -> RSA Automation Page Practice
+    By checkBoxList_AutomationPractice = By.xpath("//input[contains(@id,'checkBoxOption') and @type='checkbox']");
+    By selectOptions_AutomationPractice = By.xpath("//select[@id='dropdown-class-example']");
+
+    //Xpath/Css Locators from Assignment 2 -> RSA Calendar UI Automation
+    By calendarUiOpenCalendarElement = By.cssSelector("[class*='calendar-button__icon']");
+    By calendarUiHeaderElement = By.xpath("//span[contains(@class,'react-calendar__navigation__label__labelText--from')]");
+    By calendarUiGetListOfYearElements = By.xpath("//button[contains(@class,'react-calendar__decade-view__years__year')]");
+    By calendarUiGetListOfMonthElements = By.xpath("//button[contains(@class,'react-calendar__year-view__months__month')]");
+    By calendarUiGetListOfDateElements = By.xpath("//button[(contains(@class,'react-calendar__month-view__days__day')) and not(contains(@class,'--neighboringMonth'))]");
 }

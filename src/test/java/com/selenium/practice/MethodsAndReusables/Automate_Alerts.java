@@ -1,4 +1,4 @@
-package com.selenium.practice.Automating_WebPages_Practice;
+package com.selenium.practice.MethodsAndReusables;
 
 import Utility.BaseTest;
 import org.openqa.selenium.By;
