@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 
 import java.io.FileReader;
@@ -12,7 +13,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 
-import static Utility.BaseTest.baseUri;
+import static Utility.BaseTest.*;
 
 public class FrameworkUtilities {
 
@@ -57,7 +58,20 @@ public class FrameworkUtilities {
 
     public static WebDriver initializeChromeDriverAndNavigateToUrl(String... url) {
         String baseUri = url.length != 0 ? url[0] : "https://www.google.com/";
+        if (SeleniumTest != null && extentReports != null) {
+            SeleniumTest.info("Navigating to URL: " + baseUri);
+        }
         WebDriver driver = new ChromeDriver();
+        driver.get(baseUri);
+        return driver;
+    }
+
+    public static WebDriver initializeEdgeBrowserAndNavigateToUrl(String... url) {
+        String baseUri = url.length != 0 ? url[0] : "https://www.google.com/";
+        if (SeleniumTest != null && extentReports != null) {
+            SeleniumTest.info("Navigating to URL: " + baseUri);
+        }
+        WebDriver driver = new EdgeDriver();
         driver.get(baseUri);
         return driver;
     }

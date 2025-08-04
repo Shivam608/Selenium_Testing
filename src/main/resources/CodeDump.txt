@@ -1046,3 +1046,235 @@ public class Exerc {
 	}
 
 
+import java.util.List;
+
+import java.util.concurrent.TimeUnit;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import org.testng.Assert;
+
+
+
+public class CalendarTest {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+
+
+String monthNumber = "6";
+
+String date = "15";
+
+String year = "2027";
+
+String[] expectedList = {monthNumber,date,year};
+
+WebDriver driver = new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+
+driver.findElement(By.cssSelector(".react-date-picker__inputGroup")).click();
+
+driver.findElement(By.cssSelector(".react-calendar__navigation__label")).click();
+
+driver.findElement(By.cssSelector(".react-calendar__navigation__label")).click();
+
+driver.findElement(By.xpath("//button[text()='"+year+"']")).click();
+
+driver.findElements(By.cssSelector(".react-calendar__year-view__months__month")).get(Integer.parseInt(monthNumber)-1).click();
+
+
+driver.findElement(By.xpath("//abbr[text()='"+date+"']")).click();
+
+
+List<WebElement> actualList = driver.findElements(By.cssSelector(".react-date-picker__inputGroup__input"));
+
+
+for(int i =0; i<actualList.size();i++)
+
+{
+
+System.out.println(actualList.get(i).getAttribute("value"));
+
+Assert.assertEquals(actualList.get(i).getAttribute("value"), expectedList[i]);
+
+}
+
+driver.close();
+}
+
+}
+
+Complete the Assignment and Post the code here
+
+import java.util.Iterator;
+
+
+
+import java.util.List;
+
+
+
+import java.util.Set;
+
+
+
+import org.openqa.selenium.By;
+
+
+
+import org.openqa.selenium.WebDriver;
+
+
+
+import org.openqa.selenium.WebElement;
+
+
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class A3 {
+
+
+
+public static void main(String[] args) {
+
+
+
+// TODO Auto-generated method stub
+
+
+
+
+
+
+
+System.setProperty("webdriver.chrome.driver", "C://work//chromedriver.exe");
+
+
+
+WebDriver driver=new ChromeDriver();
+
+
+
+driver.get("http://qaclickacademy.com/practice.php");
+
+
+
+WebElement table=driver.findElement(By.id("product"));
+
+
+
+System.out.println(table.findElements(By.tagName("tr")).size());
+
+
+
+System.out.println(table.findElements(By.tagName("tr")).get(0).findElements(By.tagName("th")).size());
+
+
+
+List<WebElement> secondrow=table.findElements(By.tagName("tr")).get(2).findElements(By.tagName("td"));
+
+
+
+System.out.println(secondrow.get(0).getText());
+
+
+
+System.out.println(secondrow.get(1).getText());
+
+
+
+System.out.println(secondrow.get(2).getText());
+
+}
+
+}
+import java.util.HashMap;
+
+import java.util.Map;
+
+
+
+import org.openqa.selenium.Proxy;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import org.openqa.selenium.edge.EdgeOptions;
+
+import org.openqa.selenium.firefox.FirefoxOptions;
+
+
+
+public class SSLCheck {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+ChromeOptions options = new ChromeOptions();
+
+Proxy proxy = new Proxy();
+
+proxy.setHttpProxy("ipaddress:4444");
+
+options.setCapability("proxy", proxy);
+
+Map<String, Object> prefs = new HashMap<String, Object>();
+
+
+
+prefs.put("download.default_directory", "/directory/path");
+
+
+
+options.setExperimentalOption("prefs", prefs);
+
+// FirefoxOptions options1 = new FirefoxOptions();
+
+// options1.setAcceptInsecureCerts(true);
+
+// EdgeOptions options2 = new EdgeOptions();
+
+options.setAcceptInsecureCerts(true);
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+
+
+WebDriver driver = new ChromeDriver(options);
+
+driver.get("https://expired.badssl.com/");
+
+System.out.println(driver.getTitle());
+
+
+
+}
+
+
+
+}
