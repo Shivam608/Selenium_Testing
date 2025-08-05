@@ -50,6 +50,9 @@ public interface XpathStore {
     By getListAmountFromWebTableExample_AutomationPractice = By.xpath(".//td[3]");
     By columnsFromWebTableExample_AutomationPractice = By.xpath(".//tr");
     By rowsFromWebTableExample_AutomationPractice = By.xpath(".//th");
+    By footerSectionLocator_AutomationPractice = By.xpath("//h1[text()='Practice Page']/following::div[@id='gf-BIG']");
+    By footerDiscountColumnLocator_AutomationPractice = By.xpath("//table[@class='gf-t']//descendant::li//a[contains(text(),'Discount')]/ancestor::ul");
+
             //table[@id="product" and @name="courses"]//tr
 
     //Xpath/Css Locators from Assignment 2 -> RSA Calendar UI Automation

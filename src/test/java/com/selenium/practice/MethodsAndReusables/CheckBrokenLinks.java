@@ -33,46 +33,50 @@ public class CheckBrokenLinks extends BaseTest {
         System.out.println("URL Fetched: " + url);
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("GET");
-        int responseCode = connectAndGetResponseCode(conn);
-        if (responseCode == -1) throw new IOException(errorMessage);
+        conn.connect();
+        int responseCode = conn.getResponseCode();
         System.out.println("Response Code: " + responseCode);
         SeleniumTest.pass("Test Link Response Code: " + responseCode);
 
         //Get all links from footer and Validate all Links
         List<WebElement> allFooterLinksElement =driver.findElements(By.cssSelector("[id='gf-BIG'] li a"));
+        SeleniumTest.info("----------------------------------------------");
         //Xpath: //*[@id='gf-BIG']//descendant::li/a[@href]
         for (WebElement e : allFooterLinksElement) {
-            SeleniumTest.info("----------------------------------------------");
             url = e.getDomAttribute("href");
             System.out.println("Link Fetched: " + url);
             assert url != null;
             SeleniumTest.info("Linked Text: " + e.getText());
             SeleniumTest.info("URL Fetched: " + url);
+            HttpURLConnection connection;
+            //Building URL Connection Properties
             if (url.toLowerCase().contains("https")) {
-                HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+                connection = (HttpURLConnection) new URL(url).openConnection();
                 connection.setRequestMethod("HEAD");
                 connection.connect();
                 responseCode = connection.getResponseCode();
                 System.out.println(responseCode);
-                SeleniumTest.pass("Response Status Code: " + textColorGreen(String.valueOf(responseCode)));
+                checkFor200StatusCode(responseCode);
                 SeleniumTest.info("----------------------------------------------");
             } else if (url.toLowerCase().contains("http")) {
-                responseCode = connectAndGetResponseCode(conn);
-                System.out.println();
-                SeleniumTest.info(textColorOrange("(Link has http Protocol) Response Code: " + textColorOrange(String.valueOf(responseCode))));
+                connection = (HttpURLConnection) new URL(url).openConnection();
+                connection.setRequestMethod("HEAD");
+                responseCode = connectAndGetResponseCode(connection);
+                if (responseCode == -1) SeleniumTest.warning(textColorOrange("(Link has http Protocol) Response Code: " + textColorOrange(String.valueOf(responseCode)) + "Error Message: " + errorMessage));
                 SeleniumTest.info("----------------------------------------------");
             } else {
                 System.out.println("URL has no Link: " + url + "Skipping...");
-                SeleniumTest.log(Status.INFO, textColorOrange("URL has no Link: " + url + "Skipping..."));
+                SeleniumTest.log(Status.WARNING, textColorOrange("URL has no Link: " + url + "Skipping..."));
                 SeleniumTest.info("----------------------------------------------");
             }
         }
 
-        closeBrowser(driver);
+        //Close Current Browser
+        driver.quit();
 
     }
 
-    public static int connectAndGetResponseCode(HttpURLConnection conn) {
+    public int connectAndGetResponseCode(HttpURLConnection conn) {
         try{
             conn.connect();
             return conn.getResponseCode();
@@ -80,5 +84,12 @@ public class CheckBrokenLinks extends BaseTest {
             errorMessage = e.getMessage();
             return -1;
         }
+    }
+
+    public void checkFor200StatusCode(int statusCode) {
+        if (statusCode != 200) {
+            SeleniumTest.fail(textColorRed("StatusCode: " + statusCode));
+        } else SeleniumTest.pass("Response Status Code: " + textColorGreen(String.valueOf(statusCode)));
+
     }
 }
