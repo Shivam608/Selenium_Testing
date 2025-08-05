@@ -1,4 +1,4 @@
-package CoreJavaBrushUp_1.Java_by_RSA;
+package CoreJavaConceptsForSelenium.PART_1;
 
 public class Part_3 {
     public static void main(String[] args) {

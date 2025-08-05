@@ -1,4 +1,4 @@
-package CoreJavaBrushUp_1.InterviewQuestions;
+package CoreJavaConceptsForSelenium.InterviewQuestions;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
