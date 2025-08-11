@@ -19,6 +19,12 @@ public class TvsMotoCorp extends CentralMotorVehicle{
         cmv.seatingCapacity();  // Due to run Time polymorphism printing child class method
         cmv.EngineDynamics();   // Due to run Time polymorphism printing child class method
 
+        CentralMotorVehicle cmvtvs = new CentralMotorVehicle();
+        cmvtvs.EngineConfiguration();
+        cmvtvs.curbWeight();
+        cmvtvs.seatingCapacity();
+        cmvtvs.EngineDynamics();
+
     }
 
     @Test
