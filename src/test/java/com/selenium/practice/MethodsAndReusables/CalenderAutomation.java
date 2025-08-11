@@ -23,7 +23,7 @@ public class CalenderAutomation extends BaseTest {
     public void calendarUiAutomation() {
         SeleniumTest = extentReports.createTest("Calendar UI Automation");
         WebDriver driver = new ChromeDriver();
-        driver.get(FrameworkConstants.RSA_CalendarUiAutomation);
+        driver.get(FrameworkConstants.rsaGreenKart_offers);
 
         //Click to Open Calendar
         SeleniumTest.info("Click to Open Calendar");

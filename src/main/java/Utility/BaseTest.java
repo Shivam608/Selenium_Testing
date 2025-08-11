@@ -79,7 +79,9 @@ public abstract class BaseTest extends FrameworkUtilities implements CustomizedR
         }
         if (driver != null) {
             try {
-                driver.close();
+                if (driver.getWindowHandles().size()>1) {
+                    driver.quit();
+                } else driver.close();
             } catch (Exception e) {
                 System.err.println("Error on close(): " + e.getMessage());
             } finally {
