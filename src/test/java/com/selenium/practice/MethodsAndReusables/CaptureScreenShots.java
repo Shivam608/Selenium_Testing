@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CaptureScreenShots_tbd extends BaseTest {
+public class CaptureScreenShots extends BaseTest {
 
     public static void main(String[] args) throws IOException {
 
