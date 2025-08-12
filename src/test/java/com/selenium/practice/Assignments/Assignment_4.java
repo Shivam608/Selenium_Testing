@@ -26,6 +26,8 @@ public class Assignment_4 extends HerokuAppLinks {
         String frameTop = "frame-top";
 
         driver.switchTo().frame(frameTop);
+        //driver.switchTo().frame("frameset-middle");
+        /// for the above code line : Tag name must be having text/name as frame , Tag names like FrameSet is not a frame
         driver.switchTo().frame("frame-left");
 //        System.out.println(driver.findElement(By.id("content")).getText());
         text = driver.findElement(By.cssSelector("body")).getText();
@@ -58,7 +60,7 @@ public class Assignment_4 extends HerokuAppLinks {
 //        System.out.println(driver.findElements(By.tagName("frame")).size());
 
 
-        driver.close();
+//        driver.close();
 
     }
 }
