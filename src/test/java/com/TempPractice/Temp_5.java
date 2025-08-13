@@ -81,6 +81,11 @@ public class Temp_5 {
             e.fillInStackTrace();
         }
 
+        //Get height and Width
+        System.out.println(element.getRect().getDimension().getHeight());
+        System.out.println(element.getRect().getDimension().getWidth());
+        element.getRect().getHeight();
+
 
     }
 }

@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class Temp_1 {
+    static {
+        System.out.println("hello World");
+    }
     public static void main(String[] args) {
 
 //        String str = "Hello World";
