@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Automation Loan Department">
+
+    <test name="Test Automation Personal Loan">
+        <parameter name="key" value="123"/>
+        <classes>
+            <class name="com.TestNG.Practice.IntroductionToTestNG.PersonalLoan">
+                <methods>
+                    <exclude name="Mobile.*"> </exclude>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="Test Automation Car Loan">
+        <classes>
+            <class name="com.TestNG.Practice.IntroductionToTestNG.CarLoan">
+                <methods>
+                    <exclude name="MobileLoginCarLoan"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="Test Automation Home Loan" >
+        <parameter name="key" value="123"/>
+        <classes>
+            <class name="com.TestNG.Practice.IntroductionToTestNG.HomeLoan">
+            <methods>
+                <parameter name="key" value="121"/>
+                <include name="WebLoginHomeLoan" >
+                    <parameter name="key" value="234"/>
+                </include>
+                <include name="SystemLoginHomeLoan">
+                    <parameter name="key" value="212"/>
+                </include>
+                <include name="MobileLoginHomeLoan"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
