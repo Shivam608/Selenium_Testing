@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class FibonacciSeries {
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Max Number of Digits to be printed: ");
-        int num = sc.nextInt();
+//        Scanner sc = new Scanner(System.in);
+//        System.out.print("Max Number of Digits to be printed: ");
+//        int num = sc.nextInt();
+        int num = 10;
         // Fibonacci Series: 0 1 1 2 3 5 8 13....
         int a = 0, b = 1, n;
 

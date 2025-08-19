@@ -2,6 +2,7 @@ package Utility;
 
 public interface FrameworkConstants {
 
+    /// For Selenium Automation
     String rsaSourceWebSite = "http://www.rahulshettyacademy.com/";
     String rsaSelectorWebsite = "http://www.rahulshettyacademy.com/locatorspractice/";
     String rsaAutomationWebsite = "http://www.rahulshettyacademy.com/AutomationPractice/";
@@ -24,4 +25,7 @@ public interface FrameworkConstants {
 
     //ScreenShot File Path
     String ScreenShotPath = System.getProperty("user.dir") + "\\ScreenShots";
+
+    /// For RestAssured Automation
+    String baseUriRSA = "https://rahulshettyacademy.com";
 }

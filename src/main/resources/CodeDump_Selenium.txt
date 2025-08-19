@@ -2046,202 +2046,130 @@ public static void main(String[] args) {
 
 System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
 
-        WebDriver driver=new ChromeDriver();
+ WebDriver driver=new ChromeDriver();
 
-        driver.get("https://rahulshettyacademy.com/greenkart/#/offers");
+ driver.get("https://rahulshettyacademy.com/greenkart/#/offers");
 
-        driver.findElement(By.id("search-field")).sendKeys("Rice");
+ driver.findElement(By.id("search-field")).sendKeys("Rice");
 
-        List<WebElement> veggies=driver.findElements(By.xpath("//tr/td[1]"));
+ List<WebElement> veggies=driver.findElements(By.xpath("//tr/td[1]"));
 
-        //1 results
+ //1 results
 
-       List<WebElement> filteredList= veggies.stream().filter(veggie->veggie.getText().contains("Rice")).
+List<WebElement> filteredList= veggies.stream().filter(veggie->veggie.getText().contains("Rice")).
 
-        collect(Collectors.toList());
+ collect(Collectors.toList());
 
-       //1 result
+//1 result
 
-       Assert.assertEquals(veggies.size(), filteredList.size());
+Assert.assertEquals(veggies.size(), filteredList.size());
+}}
+import org.openqa.selenium.By;
 
-      }}
 
-      import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 
+import org.openqa.selenium.WebElement;
 
-      import org.openqa.selenium.WebDriver;
 
+import org.openqa.selenium.chrome.ChromeDriver;
+import static org.openqa.selenium.support.locators.RelativeLocator.*;
 
 
-      import org.openqa.selenium.WebElement;
 
 
+public class RelativeLoc {
 
-      import org.openqa.selenium.chrome.ChromeDriver;
 
-      import static org.openqa.selenium.support.locators.RelativeLocator.*;
+public static void main(String[] args) {
 
 
+// TODO Auto-generated method stub
 
 
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
 
-      public class RelativeLoc {
 
+WebDriver driver=new ChromeDriver();
 
 
-      public static void main(String[] args) {
+driver.get("https://rahulshettyacademy.com/angularpractice/");
 
 
+WebElement nameEditBox =driver.findElement(By.cssSelector("[name='name']"));
 
-      // TODO Auto-generated method stub
 
+System.out.println(driver.findElement(with(By.tagName("label")).above(nameEditBox)).getText());
+WebElement dateofBirth = driver.findElement(By.cssSelector("[for='dateofBirth']"));
+driver.findElement(with(By.tagName("input")).below(dateofBirth)).click();
+WebElement iceCreamLabel =driver.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
+driver.findElement(with(By.tagName("input")).toLeftOf(iceCreamLabel)).click();
 
 
-      System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+WebElement rdb = driver.findElement(By.id("inlineRadio1"));
 
 
+System.out.println(driver.findElement(with(By.tagName("label")).toRightOf(rdb)).getText());
+}
+}
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
-      WebDriver driver=new ChromeDriver();
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 
-      driver.get("https://rahulshettyacademy.com/angularpractice/");
+public class NewWindow {
 
 
+public static void main(String[] args) throws IOException {
+// TODO Auto-generated method stub
 
-      WebElement nameEditBox =driver.findElement(By.cssSelector("[name='name']"));
 
 
 
-      System.out.println(driver.findElement(with(By.tagName("label")).above(nameEditBox)).getText());
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
 
-      WebElement dateofBirth = driver.findElement(By.cssSelector("[for='dateofBirth']"));
 
-      driver.findElement(with(By.tagName("input")).below(dateofBirth)).click();
+WebDriver driver=new ChromeDriver();
 
-      WebElement iceCreamLabel =driver.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
+driver.get("https://rahulshettyacademy.com/angularpractice/");
+//Switching Window
+driver.switchTo().newWindow(WindowType.WINDOW);
 
-      driver.findElement(with(By.tagName("input")).toLeftOf(iceCreamLabel)).click();
-
-
-
-      WebElement rdb = driver.findElement(By.id("inlineRadio1"));
-
-
-
-      System.out.println(driver.findElement(with(By.tagName("label")).toRightOf(rdb)).getText());
-
-      }
-
-      }
-
-      import java.io.File;
-
-      import java.io.IOException;
-
-      import java.util.Iterator;
-
-      import java.util.Set;
-
-
-
-      import org.apache.commons.io.FileUtils;
-
-      import org.openqa.selenium.By;
-
-      import org.openqa.selenium.OutputType;
-
-      import org.openqa.selenium.WebDriver;
-
-      import org.openqa.selenium.WebElement;
-
-      import org.openqa.selenium.WindowType;
-
-      import org.openqa.selenium.chrome.ChromeDriver;
-
-
-
-      public class NewWindow {
-
-
-
-      public static void main(String[] args) throws IOException {
-
-      // TODO Auto-generated method stub
-
-
-
-
-
-      System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
-
-
-
-      WebDriver driver=new ChromeDriver();
-
-
-      driver.get("https://rahulshettyacademy.com/angularpractice/");
-
-      //Switching Window
-
-      driver.switchTo().newWindow(WindowType.WINDOW);
-
-
-      Set<String> handles=driver.getWindowHandles();
-
-      Iterator<String> it=handles.iterator();
-
-      String parentWindowId = it.next();
-
-      String childWindow =it.next();
-
-      driver.switchTo().window(childWindow);
-
-      driver.get("https://rahulshettyacademy.com/");
-
-      String courseName = driver.findElements(By.cssSelector("a[href*='https://courses.rahulshettyacademy.com/p']"))
-
-      .get(1).getText();
-
-      driver.switchTo().window(parentWindowId);
-
-      WebElement name=driver.findElement(By.cssSelector("[name='name']"));
-
-      name.sendKeys(courseName);
-
-      //Screenshot
-
-      File file=name.getScreenshotAs(OutputType.FILE);
-
-
-      FileUtils.copyFile(file, new File("logo.png"));
-
-
-      //driver.quit();
-
-
-      //GEt Height & Width
-
-      System.out.println(name.getRect().getDimension().getHeight());
-
-      System.out.println(name.getRect().getDimension().getWidth());
-
-
-
-
-
-
-
-
-
-
-
-      }
-
-
-
-      }
+Set<String> handles=driver.getWindowHandles();
+Iterator<String> it=handles.iterator();
+String parentWindowId = it.next();
+String childWindow =it.next();
+driver.switchTo().window(childWindow);
+driver.get("https://rahulshettyacademy.com/");
+String courseName = driver.findElements(By.cssSelector("a[href*='https://courses.rahulshettyacademy.com/p']"))
+.get(1).getText();
+driver.switchTo().window(parentWindowId);
+WebElement name=driver.findElement(By.cssSelector("[name='name']"));
+name.sendKeys(courseName);
+//Screenshot
+File file=name.getScreenshotAs(OutputType.FILE);
+
+FileUtils.copyFile(file, new File("logo.png"));
+
+//driver.quit();
+
+//GEt Height & Width
+System.out.println(name.getRect().getDimension().getHeight());
+System.out.println(name.getRect().getDimension().getWidth());
+
+}
+}
 
 package coreJava;
 
@@ -2286,5 +2214,93 @@ public class hashSetexample {
 public static void main(String[] args) { // TODO Auto-generated method stub
 
 //HashSet treeset, LinkedHashset implements Set interface //does not accept duplicate values  // There is no guarantee elements stored in sequential order..Random order HashSet<String> hs= new HashSet<String>(); hs.add("USA"); hs.add("UK"); hs.add("INDIA"); hs.add("he"); hs.add("she"); hs.add("INDIA"); System.out.println(hs); //System.out.println(hs.remove("UK")); System.out.println(hs.isEmpty()); System.out.println(hs.size()); Iterator<String> i=hs.iterator(); while(i.hasNext()) { System.out.println(i.next()); } }
+
+}
+
+package demopack;
+
+import java.util.ArrayList;
+
+public class collectiondemo {
+
+public static void main(String[] args) { // TODO Auto-generated method stub
+
+int a[] ={ 4,5,5,5,4,6,6,9,4}; // Print unique number from the list- Amazon  //print the string in reverse ArrayList<Integer>ab =new ArrayList<Integer>(); for(int i=0;i<a.length;i++) { int k=0; if(!ab.contains(a[i])) { ab.add(a[i]); k++; for(int j=i+1;j<a.length;j++) { if(a[i]==a[j]) { k++; } } // System.out.println(a[i]); //System.out.println(k); if(k==1) System.out.println(a[i]+"is unique number"); } } }
+
+}
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.edge.EdgeDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+
+public class SelIntroduction {
+
+
+
+public static void main(String[] args) {
+
+
+
+//Invoking Browser
+
+//Chrome - ChromeDriver exten->Methods close get
+
+//Firefox- FirefoxDriver ->methods close get
+
+// WebDriver  close  get
+
+//WebDriver methods + class methods
+
+
+// Chrome
+
+         ChromeOptions options = new ChromeOptions();
+
+         options.addArguments("--remote-allow-origins=*");
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+WebDriver driver = new ChromeDriver(options);
+
+
+
+
+//Firefox
+
+System.setProperty("webdriver.gecko.driver", "/Users/rahulshetty/Documents/geckodriver");
+
+WebDriver driver1 = new FirefoxDriver();
+
+
+
+//Microsoft Edge
+
+System.setProperty("webdriver.edge.driver", "/Users/rahulshetty/Documents/msedgedriver");
+
+WebDriver driver2 = new EdgeDriver();
+
+
+
+
+
+
+driver.get("https://rahulshettyacademy.com");
+
+System.out.println(driver.getTitle());
+
+System.out.println(driver.getCurrentUrl());
+
+driver.close();
+
+//driver.quit();
+
+
+}
 
 }
