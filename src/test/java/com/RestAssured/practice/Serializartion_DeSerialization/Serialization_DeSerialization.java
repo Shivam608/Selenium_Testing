@@ -21,12 +21,14 @@ public class Serialization_DeSerialization {
 
         /// De-Serialization - converted Json Object to Jva Object
         RestAssured.baseURI= "";
-        RestAssured.given()
+        ResponsePayLoad payLoad = RestAssured.given()
                 .body("/body")
                 .when().get("uri")
                 .then()
                 .extract().as(ResponsePayLoad.class);
 
+        System.out.println(payLoad.getDashBoard().getPurchaseAmount());
+        System.out.println(payLoad.getCourses().get(1).getPrice());
 
     }
 
