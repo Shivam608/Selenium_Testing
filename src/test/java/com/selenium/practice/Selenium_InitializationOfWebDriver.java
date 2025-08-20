@@ -1,5 +1,6 @@
 package com.selenium.practice;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 public class Selenium_InitializationOfWebDriver {
@@ -14,7 +15,7 @@ public class Selenium_InitializationOfWebDriver {
 //        FirefoxDriver driver = new FirefoxDriver();
 
         //Edge Browser -> msedgedriver -> Methods
-        EdgeDriver driver = new EdgeDriver();
+        WebDriver driver = new EdgeDriver();
 
         driver.get("https://www.amazon.in/");
         System.out.println(driver.getTitle());

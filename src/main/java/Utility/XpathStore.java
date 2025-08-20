@@ -44,6 +44,16 @@ public interface XpathStore {
     //Xpath/Css Locators from Assignment 2 -> RSA Automation Page Practice
     By checkBoxList_AutomationPractice = By.xpath("//input[contains(@id,'checkBoxOption') and @type='checkbox']");
     By selectOptions_AutomationPractice = By.xpath("//select[@id='dropdown-class-example']");
+    By listOfAmountInWebTableFixedHeader_AutomationPractice = By.cssSelector(".tableFixHead td:nth-child(4)");
+    By amountFromFixedHeaderTable_AutomationPractice = By.xpath("//div[@class= 'totalAmount' and contains(text(), 'Total Amount')]");
+    By elementWebTableExample_AutomationPractice = By.xpath("//table[@id='product' and @name='courses']");
+    By getListAmountFromWebTableExample_AutomationPractice = By.xpath(".//td[3]");
+    By columnsFromWebTableExample_AutomationPractice = By.xpath(".//tr");
+    By rowsFromWebTableExample_AutomationPractice = By.xpath(".//th");
+    By footerSectionLocator_AutomationPractice = By.xpath("//h1[text()='Practice Page']/following::div[@id='gf-BIG']");
+    By footerDiscountColumnLocator_AutomationPractice = By.xpath("//table[@class='gf-t']//descendant::li//a[contains(text(),'Discount')]/ancestor::ul");
+
+            //table[@id="product" and @name="courses"]//tr
 
     //Xpath/Css Locators from Assignment 2 -> RSA Calendar UI Automation
     By calendarUiOpenCalendarElement = By.cssSelector("[class*='calendar-button__icon']");

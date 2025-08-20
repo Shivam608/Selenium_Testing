@@ -1,18 +1,23 @@
 package Utility;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.springframework.util.FileCopyUtils;
 import org.testng.Assert;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import static Utility.BaseTest.baseUri;
+import static Utility.BaseTest.*;
 
 public class FrameworkUtilities {
 
@@ -57,7 +62,20 @@ public class FrameworkUtilities {
 
     public static WebDriver initializeChromeDriverAndNavigateToUrl(String... url) {
         String baseUri = url.length != 0 ? url[0] : "https://www.google.com/";
+        if (SeleniumTest != null && extentReports != null) {
+            SeleniumTest.info("Navigating to URL: " + baseUri);
+        }
         WebDriver driver = new ChromeDriver();
+        driver.get(baseUri);
+        return driver;
+    }
+
+    public static WebDriver initializeEdgeBrowserAndNavigateToUrl(String... url) {
+        String baseUri = url.length != 0 ? url[0] : "https://www.google.com/";
+        if (SeleniumTest != null && extentReports != null) {
+            SeleniumTest.info("Navigating to URL: " + baseUri);
+        }
+        WebDriver driver = new EdgeDriver();
         driver.get(baseUri);
         return driver;
     }
@@ -74,5 +92,29 @@ public class FrameworkUtilities {
                 break;
             }
         }
+    }
+
+    public enum ScreenShotType {
+        FULL("FULL"),
+        PARTIAL("PARTIAL");
+
+        private ScreenShotType(String text) {
+        }
+    }
+
+    public static String getScreenShotPath(ScreenShotType screenShotType) {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd_MM_yyyy-HH_mm");
+        return System.getProperty("user.dir") + "\\ScreenShots\\" + screenShotType + "_ScreenShot_" +  format.format(date) + ".png";
+    }
+
+    public void takeFullScreenShot(WebDriver driver) throws IOException {
+        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileCopyUtils.copy(src, new File(getScreenShotPath(ScreenShotType.FULL)));
+    }
+
+    public void takePartialScreenShot(WebElement element) throws IOException {
+        File src = element.getScreenshotAs(OutputType.FILE);
+        FileCopyUtils.copy(src, new File(getScreenShotPath(ScreenShotType.PARTIAL)));
     }
 }

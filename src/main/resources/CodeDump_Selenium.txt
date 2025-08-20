@@ -1,0 +1,2306 @@
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class Locators3 {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+WebDriver driver = new ChromeDriver();
+
+// Sibling - Child to parent traverse
+
+//header/div/button[1]/following-sibling::button[1]
+
+driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+
+System.out.println(driver.findElement(By.xpath("//header/div/button[1]/following-sibling::button[1]")).getText());
+
+
+
+System.out.println(driver.findElement(By.xpath("//header/div/button[1]/parent::div/button[2]")).getText());
+
+
+
+
+
+
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+*****************************************************************
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class WindowActivities {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+
+
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+WebDriver driver = new ChromeDriver();
+
+driver.manage().window().maximize();
+
+driver.get("http://google.com");
+
+driver.navigate().to("https://rahulshettyacademy.com");
+
+driver.navigate().back();
+
+driver.navigate().forward();
+
+
+
+
+
+
+}
+
+
+
+}
+
+driver.findElement(By.id("divpaxinfo")).click();
+
+   Thread.sleep(2000L);
+
+
+   /*int i=1;
+
+while(i<5)
+
+{
+
+driver.findElement(By.id("hrefIncAdt")).click();
+
+i++;
+
+}*/
+
+   System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
+
+for(int i=1;i<5;i++)
+
+{
+
+driver.findElement(By.id("hrefIncAdt")).click();
+
+}
+
+
+driver.findElement(By.id("btnclosepaxoption")).click();
+
+Assert.assertEquals(driver.findElement(By.id("divpaxinfo")).getText(), "5 Adult");
+
+System.out.println(driver.findElement(By.id("divpaxinfo")).getText();
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.testng.Assert;
+
+
+
+public class Dropdown {
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+// TODO Auto-generated method stub
+
+System.setProperty("webdriver.chrome.driver", "C://work//chromedriver.exe");
+
+WebDriver driver =new ChromeDriver();
+
+driver.get("http://spicejet.com"); //URL in the browser
+
+//  //a[@value='MAA']  - Xpath for chennai
+
+
+//  //a[@value='BLR']
+
+
+driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+
+driver.findElement(By.xpath("//a[@value='BLR']")).click();
+
+Thread.sleep(2000);
+
+
+//driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
+
+driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
+
+
+
+driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active")).click();
+}
+}
+
+import java.util.List;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.Keys;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class AutoSuggestive {
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+// TODO Auto-generated method stub
+
+
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+WebDriver driver =new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+
+driver.findElement(By.id("autosuggest")).sendKeys("ind");
+
+Thread.sleep(3000);
+
+List<WebElement> options =driver.findElements(By.cssSelector("li[class='ui-menu-item'] a"));
+
+
+for(WebElement option :options)
+
+{
+
+if(option.getText().equalsIgnoreCase("India"))
+
+{
+
+option.click();
+
+break;
+
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+}
+
+WebDriver driver =new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/dropdownsPractise/"); //URL in the browser
+
+Assert.assertFalse(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+
+//Assert.assertFalse(true);System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+
+driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
+
+System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+
+Assert.assertTrue(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+
+// System.out.println(driver.findElement(By.name("ctl00$mainContent$view_date2")).isEnabled());
+
+System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+
+driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
+
+System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+
+if(driver.findElement(By.id("Div1")).getAttribute("style").contains("1"))
+
+{
+
+
+System.out.println("its enabled");
+
+Assert.assertTrue(true);
+
+}
+
+else
+
+{
+
+Assert.assertTrue(false);
+
+}
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.testng.Assert;
+
+
+
+public class e2e {
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+// TODO Auto-generated method stub
+
+
+
+
+System.setProperty("webdriver.chrome.driver", "C://work//chromedriver.exe");
+
+WebDriver driver =new ChromeDriver();
+
+driver.get("http://spicejet.com"); //URL in the browser
+
+driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_0")).click();
+
+driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+
+driver.findElement(By.xpath("//a[@value='DEL']")).click();
+
+Thread.sleep(2000);
+
+
+driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
+
+driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active")).click();
+
+
+if(driver.findElement(By.id("Div1")).getAttribute("style").contains("0.5"))
+
+{
+
+
+System.out.println("its disabled");
+
+Assert.assertTrue(true);
+
+
+}
+
+else
+
+{
+
+Assert.assertTrue(false);
+
+}
+
+driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
+
+
+driver.findElement(By.id("divpaxinfo")).click();
+
+   Thread.sleep(2000L);
+
+for(int i=1;i<5;i++)
+
+{
+
+driver.findElement(By.id("hrefIncAdt")).click();
+
+}
+
+
+driver.findElement(By.id("btnclosepaxoption")).click();
+
+Assert.assertEquals(driver.findElement(By.id("divpaxinfo")).getText(), "5 Adult");
+
+System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
+
+
+
+// driver.findElement(By.cssSelector("#ctl00_mainContent_btn_FindFlights")).click();
+
+driver.findElement(By.cssSelector("input[value='Search']")).click();
+
+// driver.findElement(By.xpath("//input[@value='Search']")).click();
+
+// driver.findElement(By.name("ctl00$mainContent$btn_FindFlights")).click();
+
+
+
+
+}
+
+
+
+}
+
+package Academy;
+
+import org.openqa.selenium.Alert;
+
+import org.openqa.selenium.By;
+
+
+
+
+
+
+
+import org.openqa.selenium.Keys;
+
+
+
+
+
+
+
+import org.openqa.selenium.WebDriver;
+
+
+
+
+
+
+
+import org.openqa.selenium.WebElement;
+
+
+
+
+
+
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+
+
+
+
+import org.openqa.selenium.support.ui.Select;
+
+import org.testng.Assert;
+
+
+
+
+
+
+
+public class Assignment {
+
+
+
+
+
+
+
+public static void main(String[] args) {
+
+
+
+String text="Rahul";
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+WebDriver driver = new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+
+driver.findElement(By.id("name")).sendKeys(text);
+
+driver.findElement(By.cssSelector("[id='alertbtn']")).click();
+
+System.out.println(driver.switchTo().alert().getText());
+
+driver.switchTo().alert().accept();
+
+driver.findElement(By.id("confirmbtn")).click();
+
+System.out.println(driver.switchTo().alert().getText());
+
+
+
+driver.switchTo().alert().dismiss();
+
+}
+
+}
+
+import java.util.Arrays;
+
+import java.util.List;
+
+import java.util.concurrent.TimeUnit;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+
+public class base {
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+// TODO Auto-generated method stub
+
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+
+
+WebDriver driver=new ChromeDriver();
+
+
+
+
+
+String[] itemsNeeded= {"Cucumber","Brocolli","Beetroot"};
+
+
+
+
+
+driver.get("https://rahulshettyacademy.com/seleniumPractise/");
+
+Thread.sleep(3000);
+
+addItems(driver,itemsNeeded);
+
+
+}
+
+
+
+public static  void addItems(WebDriver driver,String[] itemsNeeded)
+
+{
+
+int j=0;
+
+List<WebElement> products=driver.findElements(By.cssSelector("h4.product-name"));
+
+
+for(int i=0;i<products.size();i++)
+
+
+{
+
+
+//Brocolli - 1 Kg
+
+//Brocolli,    1 kg
+
+String[] name=products.get(i).getText().split("-");
+
+String formattedName=name[0].trim();
+
+
+//format it to get actual vegetable name
+
+//convert array into array list for easy search
+
+//  check whether name you extracted is present in arrayList or not-
+
+
+List itemsNeededList = Arrays.asList(itemsNeeded);
+
+
+
+if(itemsNeededList.contains(formattedName))
+
+{
+
+
+j++;
+
+//click on Add to cart
+
+driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
+
+
+if(j==itemsNeeded.length)
+
+{
+
+break;
+
+}
+
+
+
+
+
+}
+
+}
+
+}
+
+
+
+
+}
+
+import java.util.Arrays;
+
+import java.util.List;
+
+import java.util.concurrent.TimeUnit;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+
+public class base {
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+// TODO Auto-generated method stub
+
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+
+
+WebDriver driver=new ChromeDriver();
+
+//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+WebDriverWait w =new WebDriverWait(driver,5);
+
+
+
+
+
+
+String[] itemsNeeded= {"Cucumber","Brocolli","Beetroot"};
+
+
+
+
+
+driver.get("https://rahulshettyacademy.com/seleniumPractise/");
+
+Thread.sleep(3000);
+
+addItems(driver,itemsNeeded);
+
+driver.findElement(By.cssSelector("img[alt='Cart']")).click();
+
+driver.findElement(By.xpath("//button[contains(text(),'PROCEED TO CHECKOUT')]")).click();
+
+w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input.promoCode")));
+
+
+
+driver.findElement(By.cssSelector("input.promoCode")).sendKeys("rahulshettyacademy");
+
+driver.findElement(By.cssSelector("button.promoBtn")).click();
+
+//explicit wait
+
+
+
+w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.promoInfo")));
+
+
+
+System.out.println(driver.findElement(By.cssSelector("span.promoInfo")).getText());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+public static  void addItems(WebDriver driver,String[] itemsNeeded)
+
+{
+
+int j=0;
+
+List<WebElement> products=driver.findElements(By.cssSelector("h4.product-name"));
+
+
+for(int i=0;i<products.size();i++)
+
+
+{
+
+
+//Brocolli - 1 Kg
+
+//Brocolli,    1 kg
+
+String[] name=products.get(i).getText().split("-");
+
+String formattedName=name[0].trim();
+
+
+//format it to get actual vegetable name
+
+//convert array into array list for easy search
+
+//  check whether name you extracted is present in arrayList or not-
+
+
+List itemsNeededList = Arrays.asList(itemsNeeded);
+
+
+
+if(itemsNeededList.contains(formattedName))
+
+{
+
+
+j++;
+
+//click on Add to cart
+
+driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
+
+
+if(j==itemsNeeded.length)
+
+{
+
+break;
+
+}
+
+
+
+
+
+}
+
+}
+
+}
+
+
+
+
+}
+
+//  Assigment 2
+Complete the Assignment and post the working code here.
+
+import java.time.Duration;
+
+import java.util.List;
+
+import java.util.concurrent.TimeUnit;
+
+
+
+import org.openqa.selenium.By;
+
+
+
+
+
+
+
+import org.openqa.selenium.Keys;
+
+
+
+
+
+
+
+import org.openqa.selenium.WebDriver;
+
+
+
+
+
+
+
+import org.openqa.selenium.WebElement;
+
+
+
+
+
+
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.openqa.selenium.support.ui.Select;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+
+
+
+
+
+public class Assignment2 {
+
+
+
+
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+
+
+
+
+
+
+
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+
+
+
+
+
+
+WebDriver driver=new ChromeDriver();
+
+
+
+
+
+
+
+driver.get("https://rahulshettyacademy.com/loginpagePractise/");
+
+
+
+
+
+driver.findElement(By.name("username")).sendKeys("rahulshettyacademy");
+
+driver.findElement(By.id("password")).sendKeys("learning");
+
+driver.findElement(By.cssSelector(".customradio:nth-child(2)")).click();
+
+//Thread.sleep(3000);
+
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(7000));
+
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("okayBtn")));
+
+driver.findElement(By.id("okayBtn")).click();
+
+WebElement options = driver.findElement(By.xpath("//select[@class='form-control']"));
+
+Select dropdown = new Select(options);
+
+dropdown.selectByValue("consult");
+
+driver.findElement(By.id("signInBtn")).click();
+
+
+
+
+
+
+
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Checkout")));
+
+List <WebElement> products = driver.findElements(By.cssSelector(".card-footer .btn-info"));
+
+for(int i =0;i<products.size();i++)
+
+{
+
+products.get(i).click();
+
+}
+
+driver.findElement(By.partialLinkText("Checkout")).click();}
+
+}
+
+package demo;
+
+
+
+import java.util.Iterator;
+
+import java.util.Set;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class WIndowHandles {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+
+
+
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Downloads/chromedriver");
+
+WebDriver driver = new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/loginpagePractise/#");
+
+driver.findElement(By.cssSelector(".blinkingText")).click();
+
+Set<String> windows = driver.getWindowHandles(); //[parentid,childid,subchildId]
+
+Iterator<String>it = windows.iterator();
+
+String parentId = it.next();
+
+String childId = it.next();
+
+driver.switchTo().window(childId);
+
+System.out.println(driver.findElement(By.cssSelector(".im-para.red")).getText());
+
+driver.findElement(By.cssSelector(".im-para.red")).getText();
+
+String emailId= driver.findElement(By.cssSelector(".im-para.red")).getText().split("at")[1].trim().split(" ")[0];
+
+driver.switchTo().window(parentId);
+
+driver.findElement(By.id("username")).sendKeys(emailId);
+
+}
+}
+import junit.framework.Assert;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class Exerc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		WebDriver driver=new FirefoxDriver();
+		driver.get("http://www.ebay.com/");
+		//Count of the Link in the Entire Page
+	//	System.out.println("Links in the Page");
+	//System.out.println(driver.findElements(By.tagName("a")).size());
+	//Count of links in the footer section of the page
+	WebElement footer=driver.findElement(By.xpath(".//*[@id='glbfooter']"));
+	//System.out.println("Links in the footer section");
+	//System.out.println(footer.findElements(By.tagName("a")).size());
+	WebElement col=driver.findElement(By.xpath(".//*[@id='gf-BIG']/table/tbody/tr/td[2]/ul"));
+	//System.out.println("Links in the 2nd coloumn of the section");
+	//System.out.println(col.findElements(By.tagName("a")).size());
+	String Beforeclicking = null;
+	String Afterclicking;
+	for(int i=0;i<col.findElements(By.tagName("a")).size();i++)
+	{
+
+
+		if(col.findElements(By.tagName("a")).get(i).getText().contains("Site map"))
+		{
+			Beforeclicking = driver.getTitle();
+
+			col.findElements(By.tagName("a")).get(i).click();
+			break;
+			}
+	}
+	Afterclicking =driver.getTitle();
+	if(Beforeclicking!=Afterclicking)
+	{
+		if(driver.getPageSource().contains("sitemap"))
+
+			System.out.println("PASS");
+	}
+	else
+	{
+		System.out.println("FAIL");
+	}
+
+}
+
+	}
+
+
+import java.util.List;
+
+import java.util.concurrent.TimeUnit;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import org.testng.Assert;
+
+
+
+public class CalendarTest {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+
+
+String monthNumber = "6";
+
+String date = "15";
+
+String year = "2027";
+
+String[] expectedList = {monthNumber,date,year};
+
+WebDriver driver = new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+
+driver.findElement(By.cssSelector(".react-date-picker__inputGroup")).click();
+
+driver.findElement(By.cssSelector(".react-calendar__navigation__label")).click();
+
+driver.findElement(By.cssSelector(".react-calendar__navigation__label")).click();
+
+driver.findElement(By.xpath("//button[text()='"+year+"']")).click();
+
+driver.findElements(By.cssSelector(".react-calendar__year-view__months__month")).get(Integer.parseInt(monthNumber)-1).click();
+
+
+driver.findElement(By.xpath("//abbr[text()='"+date+"']")).click();
+
+
+List<WebElement> actualList = driver.findElements(By.cssSelector(".react-date-picker__inputGroup__input"));
+
+
+for(int i =0; i<actualList.size();i++)
+
+{
+
+System.out.println(actualList.get(i).getAttribute("value"));
+
+Assert.assertEquals(actualList.get(i).getAttribute("value"), expectedList[i]);
+
+}
+
+driver.close();
+}
+
+}
+
+Complete the Assignment and Post the code here
+
+import java.util.Iterator;
+
+
+
+import java.util.List;
+
+
+
+import java.util.Set;
+
+
+
+import org.openqa.selenium.By;
+
+
+
+import org.openqa.selenium.WebDriver;
+
+
+
+import org.openqa.selenium.WebElement;
+
+
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class A3 {
+
+
+
+public static void main(String[] args) {
+
+
+
+// TODO Auto-generated method stub
+
+
+
+
+
+
+
+System.setProperty("webdriver.chrome.driver", "C://work//chromedriver.exe");
+
+
+
+WebDriver driver=new ChromeDriver();
+
+
+
+driver.get("http://qaclickacademy.com/practice.php");
+
+
+
+WebElement table=driver.findElement(By.id("product"));
+
+
+
+System.out.println(table.findElements(By.tagName("tr")).size());
+
+
+
+System.out.println(table.findElements(By.tagName("tr")).get(0).findElements(By.tagName("th")).size());
+
+
+
+List<WebElement> secondrow=table.findElements(By.tagName("tr")).get(2).findElements(By.tagName("td"));
+
+
+
+System.out.println(secondrow.get(0).getText());
+
+
+
+System.out.println(secondrow.get(1).getText());
+
+
+
+System.out.println(secondrow.get(2).getText());
+
+}
+
+}
+import java.util.HashMap;
+
+import java.util.Map;
+
+
+
+import org.openqa.selenium.Proxy;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import org.openqa.selenium.edge.EdgeOptions;
+
+import org.openqa.selenium.firefox.FirefoxOptions;
+
+
+
+public class SSLCheck {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+ChromeOptions options = new ChromeOptions();
+
+Proxy proxy = new Proxy();
+
+proxy.setHttpProxy("ipaddress:4444");
+
+options.setCapability("proxy", proxy);
+
+Map<String, Object> prefs = new HashMap<String, Object>();
+
+
+
+prefs.put("download.default_directory", "/directory/path");
+
+
+
+options.setExperimentalOption("prefs", prefs);
+
+// FirefoxOptions options1 = new FirefoxOptions();
+
+// options1.setAcceptInsecureCerts(true);
+
+// EdgeOptions options2 = new EdgeOptions();
+
+options.setAcceptInsecureCerts(true);
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+
+
+WebDriver driver = new ChromeDriver(options);
+
+driver.get("https://expired.badssl.com/");
+
+System.out.println(driver.getTitle());
+
+
+
+}
+
+
+
+}
+package coreJava;
+
+public class whiledemo {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+//While loop
+
+//1 to 10
+int i=10;
+
+/* while(i>0)
+{
+System.out.println(i);
+i--;//i=2
+}
+}*/
+int j=20;
+do
+{
+System.out.println(j);
+j++;
+
+}while(j>30);// 1 loop of execution is guarantee
+
+}
+
+//
+
+}
+
+// For if loop
+
+
+
+package coreJava;
+
+public class forloopexample {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+// 1 to 10
+
+/* for(initization;condition;increment)
+{
+
+}*/
+/* if(5>2)
+{
+
+
+System.out.println("success");
+System.out.println("second step");
+}
+
+else
+
+System.out.println("fail");*/
+
+
+for(int i=0;i<10;i=i+3)
+{
+if(i==9)
+System.out.println(" 9 is displayed");
+else
+System.out.println("I didnot find");//
+}
+}
+
+}
+package demopack;
+
+public class pb1 {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+//nested loops works -
+int k=1;
+for(int i=0;i<4;i++) //(outer for loop) this block will loop for 4 times
+{
+//System.out.println( "outer loop started");
+for(int j=1;j<=4-i;j++) // inner loop
+{
+System.out.print( k);
+System.out.print("\t");
+k++;
+}
+//System.out.println( "");
+}
+}
+
+}
+
+// Example on pyramid Triangle
+
+package demopack;
+
+public class loop2demo {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+//int k=1;
+for(int i=1;i<5;i++)
+{
+for(int j=1;j<=i;j++)
+{
+System.out.print(j);
+System.out.print("\t");
+//k++;
+}
+System.out.println("");
+
+}
+}
+
+}
+
+package coreJava;
+
+import demopack.CentralTraffic;
+
+public class AustralianTrafic implements CentralTraffic,ContinentalTraffic {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+CentralTraffic a= new AustralianTrafic();
+a.redStop();
+a.FlashYellow();
+a.greenGo();
+
+AustralianTrafic at=new AustralianTrafic();
+ContinentalTraffic ct=new AustralianTrafic();
+at.walkonsymbol();
+ct.Trainsymbol();
+
+
+}
+
+@Override
+public void redStop() {
+// TODO Auto-generated method stub
+System.out.println(" redstop implementation");
+}
+public void walkonsymbol()
+{
+System.out.println("walking");
+}
+@Override
+public void FlashYellow() {
+// TODO Auto-generated method stub
+System.out.println(" flash yellow implementation");
+//code
+}
+
+@Override
+public void greenGo() {
+// TODO Auto-generated method stub
+System.out.println(" Green go implementation");
+}
+
+@Override
+public void Trainsymbol() {
+// TODO Auto-generated method stub
+
+}
+
+}
+
+//CentralTraffic
+
+package demopack;
+
+public interface CentralTraffic {
+int a=4;//public
+public void greenGo();
+public void redStop();
+public void FlashYellow();
+
+
+}
+
+//ContinentalTraffic
+
+package coreJava;
+
+public interface ContinentalTraffic {
+
+public void Trainsymbol();
+}
+
+package tests;
+
+
+
+import java.io.IOException;
+
+import java.net.HttpURLConnection;
+
+import java.net.MalformedURLException;
+
+import java.net.URL;
+
+import java.net.URLConnection;
+
+import java.util.List;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.testng.Assert;
+
+import org.testng.asserts.SoftAssert;
+
+
+
+public class BrokenLinks {
+
+
+
+public static void main(String[] args) throws MalformedURLException, IOException {
+
+// TODO Auto-generated method stub
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+         WebDriver driver=new ChromeDriver();
+
+
+
+         //broken URL
+
+         //Step 1 - IS to get all urls tied up to the links using Selenium
+
+         //  Java methods will call URL's and gets you the status code
+
+         //if status code >400 then that url is not working-> link which tied to url is broken
+
+         //a[href*="soapui"]'
+
+         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+
+
+
+
+
+      List<WebElement> links=   driver.findElements(By.cssSelector("li[class='gf-li'] a"));
+
+      SoftAssert a =new SoftAssert();
+
+
+
+      for(WebElement link : links)
+
+      {
+
+
+
+          String url= link.getAttribute("href");
+
+
+
+          HttpURLConnection   conn= (HttpURLConnection)new URL(url).openConnection();
+
+          conn.setRequestMethod("HEAD");
+
+          conn.connect();
+
+          int respCode = conn.getResponseCode();
+
+          System.out.println(respCode);
+
+          a.assertTrue(respCode<400, "The link with Text"+link.getText()+" is broken with code" +respCode);
+
+
+
+
+
+      }
+
+
+
+      a.assertAll();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+private static Object getReturnCode(WebElement link) {
+
+// TODO Auto-generated method stub
+
+return null;
+
+}
+
+
+
+}
+
+package coreJava;public class childDemo extends parentDemo{
+
+String name ="QAClickAcademy";
+
+
+public childDemo()
+{
+super();// this should be always be at first line
+System.out.println("child class construtor");
+
+}
+public void getStringdata()
+{
+System.out.println(name);
+System.out.println(super.name);
+}
+
+
+public void getData()
+{
+super.getData();
+System.out.println("I am in child class");
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+
+
+childDemo cd = new childDemo();
+
+cd.getStringdata();
+cd.getData();
+}
+
+}
+
+// ParentDemo.js
+
+package coreJava;
+
+public class parentDemo {
+
+String name= "Rahul";
+
+public parentDemo()
+{
+System.out.println("Parent class construtor");
+
+}
+public void getData()
+{
+System.out.println(" I am parent class");
+}
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+}
+
+}
+
+package coreJava;
+//function overloading
+//either argument count should be different or
+//argument data type should be different
+public class childlevel extends childClassDemo {
+
+public void getData(int a)
+{
+System.out.println(a);
+}
+public void getData(String a)
+{
+System.out.println(a);
+}
+public void getData(int a,int b)
+{
+System.out.println(b);
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+childlevel cl=new childlevel();
+cl.getData(2);
+cl.getData("hello");
+cl.getData(2, 5);
+
+}
+
+}
+
+.. ChildDemo.java
+
+package coreJava;
+
+public class childDemo extends parentDemo{
+
+String name ="QAClickAcademy";
+
+
+public childDemo()
+{
+super();// this should be always be at first line
+System.out.println("child class construtor");
+
+}
+public void getStringdata()
+{
+System.out.println(name);
+System.out.println(super.name);
+}
+
+
+public void getData()
+{
+super.getData();
+System.out.println("I am in child class");
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+childDemo cd = new childDemo();
+
+cd.getStringdata();
+cd.getData();
+}
+
+}
+package coreJava;
+
+//Arrays
+
+public class ArraysDemo {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+arrayListexample ab=new arrayListexample();
+ab.abc();
+ab.abc();
+//ab.
+
+
+/* int a;
+a=4;*/
+
+//- A container which stores multiple values of same data type
+
+int a[] = new int[5];// Delcares an aray and allocates memory for the values
+a[0]= 2;
+a[1]=6;
+a[2]=1;
+a[3]=9;
+a[4]=12;//initilased values into that array
+
+int b[] = {1,4,3,5,7,8};
+
+for(int i=0;i<b.length;i++)
+{
+System.out.println(b[i]);
+// retrieve values present in this array/
+}
+
+}
+
+}
+
+***********************************************************************************************************************************************************************************
+
+//Multi Dimensional code
+
+
+
+
+
+package coreJava;
+
+public class Multidimensional {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+////a[row][coloum]
+
+
+int a[][] = new int[2][3];
+a[0][0]=2;
+a[0][1]=4;
+a[0][2]=5;
+a[1][0]=3;
+a[1][1]=4;
+a[1][2]=7;
+//System.out.println(a[1][0]);
+/*int b[][]= {‌{2,4,5},{3,4,7},{5,2,1}};
+System.out.println(b[2][1]);*/
+
+for(int i=0;i<2;i++) //row
+{
+
+for(int j=0;j<3;j++) //coloumn
+{
+
+System.out.println(a[i][j]);
+}
+}
+
+}
+
+}
+
+package coreJava;
+
+public class InterviewMinnumber {
+/*2 4 5
+
+3 4 7
+
+1 2 9*/
+//Maximum number from the array
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+int abc[][]={‌{2,4,5},{3,2,10},{1,2,0}};
+int min=abc[0][0];
+int mincoloumn = 0;
+
+
+for(int i=0;i<3;i++)
+{
+for(int j=0;j<3;j++)
+{
+if(abc[i][j]<min)//2
+{
+min=abc[i][j];
+mincoloumn=j;
+}
+}
+}
+//=1
+int max=abc[0][mincoloumn];
+int k = 0;
+while(k<3)
+{
+if(abc[k][mincoloumn]>max)
+{
+max=abc[k][mincoloumn];
+}
+k++;
+}
+
+System.out.println(max);
+}
+
+}
+package coreJava;
+
+public class constructDemo { // Default public constructDemo() { System.out.println(" I am in the constructor"); System.out.println(" I am in the constructor lecture 1"); //  } // Parameterized constructor public constructDemo(int a, int b) { System.out.println(" I am in the parameterized constructor"); int c=a+b; System.out.println(c); } public constructDemo(String str) { System.out.println(str); } public void getdata() { System.out.println("I am the method"); } //will not return values //name of constructor should be the class name
+
+public static void main(String[] args) { // TODO Auto-generated method stub constructDemo cd= new constructDemo(); constructDemo cds= new constructDemo("hello"); constructDemo c= new constructDemo(4,5); // compiler will call implict constructor if you have not defined constructor block //when ever you create an object constructor is called //block of code when ever an object is created }
+
+}
+package tests;
+
+
+
+import java.util.List;
+
+import java.util.stream.Collectors;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.testng.Assert;
+
+
+
+public class LiveDemo {
+
+
+
+public static void main(String[] args) throws InterruptedException {
+
+// TODO Auto-generated method stub
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+WebDriver driver = new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/greenkart/#/offers");
+
+// click on column
+
+driver.findElement(By.xpath("//tr/th[1]")).click();
+
+
+
+// capture all webelements into list
+
+List<WebElement> elementsList = driver.findElements(By.xpath("//tr/td[1]"));
+
+
+
+// capture text of all webelements into new(original) list
+
+List<String> originalList = elementsList.stream().map(s -> s.getText()).collect(Collectors.toList());
+
+
+
+// sort on the original list of step 3 -> sorted list
+
+
+
+List<String> sortedList = originalList.stream().sorted().collect(Collectors.toList());
+
+// compare original list vs sorted list
+
+Assert.assertTrue(originalList.equals(sortedList));
+
+List<String> price;
+
+// scan the name column with getText ->Beans->print the price of the Rice
+
+do
+
+{
+
+List<WebElement> rows = driver.findElements(By.xpath("//tr/td[1]"));
+
+price = rows.stream().filter(s -> s.getText().contains("Rice"))
+
+.map(s -> getPriceVeggie(s)).collect(Collectors.toList());
+
+
+price.forEach(a -> System.out.println(a));
+
+if(price.size()<1)
+
+{
+
+driver.findElement(By.cssSelector("[aria-label='Next']")).click();
+
+}
+
+}while(price.size()<1);
+
+
+
+}
+
+
+
+private static String getPriceVeggie(WebElement s) {
+
+// TODO Auto-generated method stub
+
+String pricevalue = s.findElement(By.xpath("following-sibling::td[1]")).getText();
+
+
+
+return pricevalue;
+
+}
+
+}
+
+package tests;
+
+
+
+import java.util.List;
+
+import java.util.stream.Collectors;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.testng.Assert;
+
+
+
+public class filter {
+
+
+
+public static void main(String[] args) {
+
+// TODO Auto-generated method stub
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+ WebDriver driver=new ChromeDriver();
+
+ driver.get("https://rahulshettyacademy.com/greenkart/#/offers");
+
+ driver.findElement(By.id("search-field")).sendKeys("Rice");
+
+ List<WebElement> veggies=driver.findElements(By.xpath("//tr/td[1]"));
+
+ //1 results
+
+List<WebElement> filteredList= veggies.stream().filter(veggie->veggie.getText().contains("Rice")).
+
+ collect(Collectors.toList());
+
+//1 result
+
+Assert.assertEquals(veggies.size(), filteredList.size());
+}}
+import org.openqa.selenium.By;
+
+
+import org.openqa.selenium.WebDriver;
+
+
+import org.openqa.selenium.WebElement;
+
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import static org.openqa.selenium.support.locators.RelativeLocator.*;
+
+
+
+
+public class RelativeLoc {
+
+
+public static void main(String[] args) {
+
+
+// TODO Auto-generated method stub
+
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+
+WebDriver driver=new ChromeDriver();
+
+
+driver.get("https://rahulshettyacademy.com/angularpractice/");
+
+
+WebElement nameEditBox =driver.findElement(By.cssSelector("[name='name']"));
+
+
+System.out.println(driver.findElement(with(By.tagName("label")).above(nameEditBox)).getText());
+WebElement dateofBirth = driver.findElement(By.cssSelector("[for='dateofBirth']"));
+driver.findElement(with(By.tagName("input")).below(dateofBirth)).click();
+WebElement iceCreamLabel =driver.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
+driver.findElement(with(By.tagName("input")).toLeftOf(iceCreamLabel)).click();
+
+
+WebElement rdb = driver.findElement(By.id("inlineRadio1"));
+
+
+System.out.println(driver.findElement(with(By.tagName("label")).toRightOf(rdb)).getText());
+}
+}
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
+
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class NewWindow {
+
+
+public static void main(String[] args) throws IOException {
+// TODO Auto-generated method stub
+
+
+
+
+System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
+
+
+WebDriver driver=new ChromeDriver();
+
+driver.get("https://rahulshettyacademy.com/angularpractice/");
+//Switching Window
+driver.switchTo().newWindow(WindowType.WINDOW);
+
+Set<String> handles=driver.getWindowHandles();
+Iterator<String> it=handles.iterator();
+String parentWindowId = it.next();
+String childWindow =it.next();
+driver.switchTo().window(childWindow);
+driver.get("https://rahulshettyacademy.com/");
+String courseName = driver.findElements(By.cssSelector("a[href*='https://courses.rahulshettyacademy.com/p']"))
+.get(1).getText();
+driver.switchTo().window(parentWindowId);
+WebElement name=driver.findElement(By.cssSelector("[name='name']"));
+name.sendKeys(courseName);
+//Screenshot
+File file=name.getScreenshotAs(OutputType.FILE);
+
+FileUtils.copyFile(file, new File("logo.png"));
+
+//driver.quit();
+
+//GEt Height & Width
+System.out.println(name.getRect().getDimension().getHeight());
+System.out.println(name.getRect().getDimension().getWidth());
+
+}
+}
+
+package coreJava;
+
+import java.util.ArrayList;
+
+public class arrayListexample { // can accept duplicate values //ArraList,LinkedList,vector- Implementing List interface //array have fixed size where as arraylist can grow dynamicaly //you can access and insert any value in any index private int i =5; public static void main(String[] args) { // TODO Auto-generated method stub
+
+ArrayList<String> a=new ArrayList<String>(); a.add("rahul"); a.add("java"); a.add("java"); System.out.println(a); a.add(0, "student"); System.out.println(a); /*a.remove(1); a.remove("java"); System.out.println(a);*/ System.out.println(a.get(2)); // testing System.out.println(a.contains("java")); System.out.println(a.indexOf("rahul")); System.out.println(a.isEmpty()); System.out.println(a.size()); } protected void abc() { // TODO Auto-generated method stub System.out.println("hello"); }
+
+}
+
+package coreJava;
+
+import java.util.ArrayList;
+
+public class arrayListexample { // can accept duplicate values //ArraList,LinkedList,vector- Implementing List interface //array have fixed size where as arraylist can grow dynamicaly //you can access and insert any value in any index private int i =5; public static void main(String[] args) { // TODO Auto-generated method stub
+
+ArrayList<String> a=new ArrayList<String>(); a.add("rahul"); a.add("java"); a.add("java"); System.out.println(a); a.add(0, "student"); System.out.println(a); /*a.remove(1); a.remove("java"); System.out.println(a);*/ System.out.println(a.get(2)); // testing System.out.println(a.contains("java")); System.out.println(a.indexOf("rahul")); System.out.println(a.isEmpty()); System.out.println(a.size()); } protected void abc() { // TODO Auto-generated method stub System.out.println("hello"); }
+
+}
+
+package coreJava;
+
+import java.util.HashMap; import java.util.Iterator; import java.util.Map; import java.util.Map.Entry; import java.util.Set;
+
+public class hashMapexample {
+
+public static void main(String[] args) { // TODO Auto-generated method stub
+
+HashMap<Integer,String> hm=new HashMap<Integer,String>(); hm.put(0, "hello"); hm.put(1, "Gudbye"); hm.put(42, "morning"); hm.put(3, "evening"); System.out.println(hm.get(42)); hm.remove(42); System.out.println(hm.get(42)); Set sn= hm.entrySet(); Iterator it =sn.iterator(); //hashtable -pass table set collections  while(it.hasNext()) { System.out.println(it.next()); Map.Entry mp=(Map.Entry)it.next();// System.out.println(mp.getKey()); System.out.println(mp.getValue()); }
+
+}}
+
+// HashSet
+
+package coreJava;
+
+import java.util.HashSet; import java.util.Iterator;
+
+public class hashSetexample {
+
+public static void main(String[] args) { // TODO Auto-generated method stub
+
+//HashSet treeset, LinkedHashset implements Set interface //does not accept duplicate values  // There is no guarantee elements stored in sequential order..Random order HashSet<String> hs= new HashSet<String>(); hs.add("USA"); hs.add("UK"); hs.add("INDIA"); hs.add("he"); hs.add("she"); hs.add("INDIA"); System.out.println(hs); //System.out.println(hs.remove("UK")); System.out.println(hs.isEmpty()); System.out.println(hs.size()); Iterator<String> i=hs.iterator(); while(i.hasNext()) { System.out.println(i.next()); } }
+
+}
+
+package demopack;
+
+import java.util.ArrayList;
+
+public class collectiondemo {
+
+public static void main(String[] args) { // TODO Auto-generated method stub
+
+int a[] ={ 4,5,5,5,4,6,6,9,4}; // Print unique number from the list- Amazon  //print the string in reverse ArrayList<Integer>ab =new ArrayList<Integer>(); for(int i=0;i<a.length;i++) { int k=0; if(!ab.contains(a[i])) { ab.add(a[i]); k++; for(int j=i+1;j<a.length;j++) { if(a[i]==a[j]) { k++; } } // System.out.println(a[i]); //System.out.println(k); if(k==1) System.out.println(a[i]+"is unique number"); } } }
+
+}
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.edge.EdgeDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+
+public class SelIntroduction {
+
+
+
+public static void main(String[] args) {
+
+
+
+//Invoking Browser
+
+//Chrome - ChromeDriver exten->Methods close get
+
+//Firefox- FirefoxDriver ->methods close get
+
+// WebDriver  close  get
+
+//WebDriver methods + class methods
+
+
+// Chrome
+
+         ChromeOptions options = new ChromeOptions();
+
+         options.addArguments("--remote-allow-origins=*");
+
+System.setProperty("webdriver.chrome.driver", "/Users/rahulshetty/Documents/chromedriver");
+
+WebDriver driver = new ChromeDriver(options);
+
+
+
+
+//Firefox
+
+System.setProperty("webdriver.gecko.driver", "/Users/rahulshetty/Documents/geckodriver");
+
+WebDriver driver1 = new FirefoxDriver();
+
+
+
+//Microsoft Edge
+
+System.setProperty("webdriver.edge.driver", "/Users/rahulshetty/Documents/msedgedriver");
+
+WebDriver driver2 = new EdgeDriver();
+
+
+
+
+
+
+driver.get("https://rahulshettyacademy.com");
+
+System.out.println(driver.getTitle());
+
+System.out.println(driver.getCurrentUrl());
+
+driver.close();
+
+//driver.quit();
+
+
+}
+
+}

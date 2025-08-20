@@ -1,6 +1,7 @@
 package com.selenium.practice.MethodsAndReusables;
 
 import Utility.FrameworkConstants;
+import Utility.XpathStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -47,12 +48,12 @@ public class LimitingDriverScope {
         System.out.println(driver.findElements(By.tagName("a")).size());
 
         //limiting driver scope to footer
-        WebElement footerDriver = driver.findElement(By.xpath("//h1[text()='Practice Page']/following::div[@id='gf-BIG']"));
+        WebElement footerDriver = driver.findElement(XpathStore.footerSectionLocator_AutomationPractice);
         System.out.println(footerDriver.findElements(By.tagName("a")).size());
 
         //Limiting driver scope further to first Column
         //Using descendant or ancestor
-        WebElement columnFooter = footerDriver.findElement(By.xpath("//table[@class='gf-t']//descendant::li//a[contains(text(),'Discount')]/ancestor::ul"));
+        WebElement columnFooter = footerDriver.findElement(XpathStore.footerDiscountColumnLocator_AutomationPractice);
         List<WebElement> listOfFooter1stColumnLinks = columnFooter.findElements(By.tagName("a"));
         System.out.println(listOfFooter1stColumnLinks.size());
 

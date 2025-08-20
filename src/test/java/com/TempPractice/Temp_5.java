@@ -1,12 +1,12 @@
 package com.TempPractice;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import org.springframework.util.FileCopyUtils;
 
+import java.io.File;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -24,27 +24,27 @@ public class Temp_5 {
 
         WebDriver driver = new ChromeDriver();
 
-        //Explicit Waits
+        /// Explicit Waits
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("expression")));
 
-        //Implicit Waits
+        /// Implicit Waits
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //Select Class
+        /// Select Class
         WebElement element =driver.findElement(By.xpath("//*select[@class='className']"));
         Select select = new Select(element);
         select.getFirstSelectedOption();
 
-        //Action Class
+        /// Action Class
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
 
-        //Alerts
+        /// Alerts
         driver.switchTo().alert().accept();
         driver.switchTo().alert().dismiss();
 
-        //FluentWaits
+        /// FluentWaits
         Wait<WebDriver> wait1 = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
@@ -58,12 +58,34 @@ public class Temp_5 {
             } else return null;
         });
 
-        //Window Handles
+        /// Window Handles
         Set<String> windows = driver.getWindowHandles();
         Iterator<String> iterator = windows.iterator();
         String parent = iterator.next();
         String child = iterator.next();
 
         driver.switchTo().window(parent);
+
+        /// Frames
+        int noOfFrames = driver.findElements(By.tagName("iFrame")).size();
+        driver.switchTo().frame(0);
+
+        driver.switchTo().frame("FrameName/ID");
+        driver.switchTo().defaultContent(); //Navigates back to default content
+
+        /// ScreenShots
+        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileCopyUtils.copy(src, new File(System.getProperty("user.dir")+"\\screenShot.png"));
+        }catch (Exception e) {
+            e.fillInStackTrace();
+        }
+
+        //Get height and Width
+        System.out.println(element.getRect().getDimension().getHeight());
+        System.out.println(element.getRect().getDimension().getWidth());
+        element.getRect().getHeight();
+
+
     }
 }
