@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Test Automation Loan Department">
+<suite name="Test Automation Loan Department" parallel="classes" thread-count="10">
+<!--    <listeners>-->
+<!--        <listener class-name=""/>-->
+<!--    </listeners>-->
 
     <test name="Test Automation Personal Loan">
         <parameter name="key" value="123"/>

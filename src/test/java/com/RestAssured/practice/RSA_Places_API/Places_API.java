@@ -1,13 +1,18 @@
-package com.RestAssured.practice.RestAssuredFirstProject;
+package com.RestAssured.practice.RSA_Places_API;
 
 import Utility.FrameworkConstants;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 import static org.hamcrest.Matchers.equalTo;
 
-public class REstIntro {
+public class Places_API {
 
     public static final String baseUrl = FrameworkConstants.baseUriRSA;
     public static final String get_Uri = "/maps/api/place/get/json";
@@ -20,7 +25,7 @@ public class REstIntro {
     static Throwable t = new Throwable();
 
     public static void main(String[] args) {
-        REstIntro restPlace = new REstIntro();
+        Places_API restPlace = new Places_API();
         /**
          *
          * Given - add all input details
@@ -44,8 +49,7 @@ public class REstIntro {
 
     }
 
-
-    public void deletePlaceIds(String customPlaceId, REstIntro rEstIntro) {
+    private void deletePlaceIds(String customPlaceId, Places_API rEstIntro) {
 
 
         try {
@@ -58,7 +62,7 @@ public class REstIntro {
 
     }
 
-    public static void endToEndFlow(REstIntro restPlace) {
+    private static void endToEndFlow(Places_API restPlace) {
         //----------------POST CALL----------------------------------//
         ///  Using POST method to add new Data in RSA database
         ///   this is called sending request payload
@@ -206,9 +210,22 @@ public class REstIntro {
     }
 
 
-
     private String jsonExtractor (String path) {
-        JsonPath js = new JsonPath(REstIntro.Response);
+        JsonPath js = new JsonPath(Places_API.Response);
         return js.getString(path);
+    }
+
+    public String PostMethodUsingJsonPayLoadFile() throws IOException {
+
+        String path = System.getProperty("user.dir") + "\\src\\main\\resources\\jsonPayLoadPlaceAPI.json";
+        String postBody = new String(Files.readAllBytes(Paths.get(path)));
+        RestAssured.baseURI=baseUrl;
+        return RestAssured.given().log().all()
+                .queryParam("key", "qaclick123")
+                .body(postBody)
+                .when().post("/maps/api/place/add/json")
+                .then().log().all()
+                .assertThat().statusCode(200)
+                .extract().response().asString();
     }
 }

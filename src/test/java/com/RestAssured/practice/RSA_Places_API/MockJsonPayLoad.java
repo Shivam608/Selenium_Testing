@@ -1,9 +1,7 @@
-package com.RestAssured.practice.RestAssuredFirstProject;
+package com.RestAssured.practice.RSA_Places_API;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
-
-import java.util.Arrays;
 
 public class MockJsonPayLoad {
 
@@ -56,6 +54,7 @@ public class MockJsonPayLoad {
     public static void main(String[] args) {
 
         JsonPath js = new JsonPath(jsonPayLoad);
+        js.prettyPrint();
 
         //Print Number of Courses
         int i = js.getInt("courses.size()");

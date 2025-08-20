@@ -1,6 +1,7 @@
-package com.RestAssured.practice.RestAssuredFirstProject;
+/*
+package com.RestAssured;
 
-public class Temp {
+public class Temp_TBD {
 
     String jsonPayLoad = "[\n" +
             "    {\n" +
@@ -6755,3 +6756,4 @@ public class Temp {
             "    }\n" +
             "]";
 }
+*/
