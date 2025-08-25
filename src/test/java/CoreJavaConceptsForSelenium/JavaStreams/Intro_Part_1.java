@@ -99,7 +99,8 @@ public class Intro_Part_1 {
 
     public void usingSteamCollect(int... value) {
         List<String> list = Arrays.asList("Pranay", "Shivam", "Shubham", "Bose", "Pronoy");
-        List<String> newList = list.stream().filter(s-> s.toLowerCase().endsWith("y"))
+        List<String> newList = list.stream()
+                .filter(s-> s.toLowerCase().endsWith("y"))
                 .sorted()
                 .map(String::toUpperCase)
                 .collect(Collectors.toList());

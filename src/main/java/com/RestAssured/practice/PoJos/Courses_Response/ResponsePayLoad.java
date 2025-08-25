@@ -1,4 +1,4 @@
-package com.RestAssured.PoJos.Courses_Response;
+package com.RestAssured.practice.PoJos.Courses_Response;
 
 import java.util.List;
 

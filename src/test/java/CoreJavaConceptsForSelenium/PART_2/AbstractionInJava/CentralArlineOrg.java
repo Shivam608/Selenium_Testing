@@ -2,6 +2,7 @@ package CoreJavaConceptsForSelenium.PART_2.AbstractionInJava;
 
 public abstract class CentralArlineOrg {
 
+    String a = "Hello";
     public void engine() {
         System.out.println("Follow Engine Guidelines");
     }
@@ -15,4 +16,8 @@ public abstract class CentralArlineOrg {
     private void privateInfo() {
         System.out.println("Private Information");
     }
+    /*
+    public CentralArlineOrg(String a) {
+        this.a = a;
+    }*/
 }

@@ -1,8 +1,8 @@
 package com.RestAssured.practice.Serializartion_DeSerialization;
 
-import com.RestAssured.PoJos.Courses_Response.Courses;
-import com.RestAssured.PoJos.Courses_Response.DashBoard;
-import com.RestAssured.PoJos.Courses_Response.ResponsePayLoad;
+import com.RestAssured.practice.PoJos.Courses_Response.Courses;
+import com.RestAssured.practice.PoJos.Courses_Response.DashBoard;
+import com.RestAssured.practice.PoJos.Courses_Response.ResponsePayLoad;
 import io.restassured.RestAssured;
 
 import java.util.ArrayList;
