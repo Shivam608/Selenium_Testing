@@ -108,12 +108,12 @@ public class FrameworkUtilities {
         return System.getProperty("user.dir") + "\\ScreenShots\\" + screenShotType + "_ScreenShot_" +  format.format(date) + ".png";
     }
 
-    public void takeFullScreenShot(WebDriver driver) throws IOException {
+    public static void takeFullScreenShot(WebDriver driver) throws IOException {
         File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileCopyUtils.copy(src, new File(getScreenShotPath(ScreenShotType.FULL)));
     }
 
-    public void takePartialScreenShot(WebElement element) throws IOException {
+    public static void takePartialScreenShot(WebElement element) throws IOException {
         File src = element.getScreenshotAs(OutputType.FILE);
         FileCopyUtils.copy(src, new File(getScreenShotPath(ScreenShotType.PARTIAL)));
     }
