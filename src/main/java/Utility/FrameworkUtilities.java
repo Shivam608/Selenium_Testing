@@ -22,12 +22,13 @@ import static Utility.BaseTest.*;
 public class FrameworkUtilities {
 
     WebDriver driver;
+    static final String propertiesPath = System.getProperty("user.dir") + "/src/main/resources/application.properties";
 
     //get Base URI from Config.properties
     public static String getBaseUri() {
         if (baseUri.isEmpty()) {
             try {
-                FileReader reader = new FileReader(System.getProperty("user.dir") + "\\src\\main\\resources\\application.properties");
+                FileReader reader = new FileReader(propertiesPath);
                 Properties prop = new Properties();
                 prop.load(reader);
                 baseUri = prop.getProperty("RestAssured_BaseURI").replace("\"", "");
@@ -41,12 +42,12 @@ public class FrameworkUtilities {
 
     //get Any Value from Application.properties
     public static String getValueFromProperties(String key) throws IOException {
-        FileReader reader = new FileReader(System.getProperty("user.dir") + "\\src\\main\\resources\\application.properties");
+        FileReader reader = new FileReader(propertiesPath);
         Properties prop = new Properties();
         prop.load(reader);
         String value = prop.getProperty(key);
         Assert.assertNotNull(value, "No Such Key: " + key);
-        System.out.println("Key: " + key + ", Value: " + value);
+//        System.out.println("Key: " + key + ", Value: " + value);
         return (String) value;
     }
 
