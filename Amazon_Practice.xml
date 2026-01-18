@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Practice Amazon Xpaths and Automations">
+    <parameter name="Driver" value="chrome"/>
+    <test name="Amazon Xpaths" >
+        <classes>
+            <class name="Practice_Assignments.Selenium_Rest_NG.Selenium_1.PracticeXpathsAmazon_1">
+            </class>
+        </classes>
+
+    </test>
+</suite>
